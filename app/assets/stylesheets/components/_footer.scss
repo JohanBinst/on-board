@@ -2,8 +2,10 @@
   padding-top: 5.5em;
   background-color: #003865;
   color: #E6F4F1;
-  clear: both;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  width: 100%;
 }
 
 .list-unstyled > li > a {
@@ -15,6 +17,10 @@
 .footer-copyright {
   font-size: small;
   margin-top: 50px;
+}
+
+.text-uppercase {
+  font-weight: bold;
 }
 
 #content {

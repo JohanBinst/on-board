@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   belongs_to :user
   validates :name, :activity_type, :destination, :departure_point, :description, :features, presence: true
   validates :price, :seats, presence: true, comparison: { greater_than: 0 }

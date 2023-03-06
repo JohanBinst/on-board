@@ -16,10 +16,7 @@ names.each do |name|
   new_user.save!
 end
 
-p "Creating 10 trips ..."
-10.times do |i|
-  photo = URI.open("https://unsplash.com/s/photos/beach-activities")
-  user = User.all.sample
+def create_name
   names = [
     "Sea Splashers",
     "Sand & Surf Adventures",
@@ -32,7 +29,10 @@ p "Creating 10 trips ..."
     "Saltwater Dreamers",
     "Sand Castles & Surfing"
   ]
-  name = names.sample
+  names.sample
+end
+
+def create_activity
   activities = [
     "Snorkeling",
     "Kayaking",
@@ -45,7 +45,10 @@ p "Creating 10 trips ..."
     "Beachcombing",
     "Sunbathing"
   ]
-  activity_type = activities.sample
+  activities.sample
+end
+
+def create_destination
   destinations = [
     "Dumbea pass",
     "Ilot Tenia",
@@ -56,8 +59,11 @@ p "Creating 10 trips ..."
     "Ilot Maitre",
     "Ilot Goeland"
   ]
-  destination = destinations.sample
-  departure_point = [
+  destinations.sample
+end
+
+def create_departure_point
+  departure_points = [
     "Orphelinat Bay",
     "Aquarêve",
     "Port Plaisance",
@@ -66,11 +72,10 @@ p "Creating 10 trips ..."
     "Ouano",
     "Tomo"
   ]
+  departure_points.sample
+end
 
-  departure_date_time = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 7, period: :morning) #=> "2014-09-19 08:07:52 -0700"
-
-  price = (100..1000).to_a.sample
-  seats = (1..20).to_a.sample
+def create_features
   features_list = [
     "fishing gears",
     "first aids",
@@ -82,9 +87,10 @@ p "Creating 10 trips ..."
     "sunsreen",
     "towels"
   ]
+  features_list.sample(rand(features_list.count) + 1)
+end
 
-  features = features_list.sample(rand(features_list.count) + 1)
-
+def create_description
   descriptions = [
     "Experience the thrill of surfing and the relaxation of yoga on the beach!",
     "Join us for a day of beach volleyball, music, and fun in the sun!",
@@ -97,24 +103,30 @@ p "Creating 10 trips ..."
     "Join a group for a day of kayaking, hiking, and beachcombing on a remote island!",
     "Experience the thrill of jet skiing and feel the wind in your hair as you speed across the waves!"
   ]
-  description = descriptions.sample
+  descriptions.sample
+end
 
+p "Creating 10 trips ..."
+10.times do |i|
+  photo = URI.open("https://unsplash.com/s/photos/beach-activities")
+  user = User.all.sample
+  departure_date_time = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 7, period: :morning) #=> "2014-09-19 08:07:52 -0700"
   attributes_hash = {
-    name: name,
-    activity_type: activity_type,
-    description: description,
-    destination: destination,
-    departure_point: departure_point,
+    name: create_name,
+    activity_type: create_activity,
+    description: create_description,
+    destination: create_destination,
+    departure_point: create_departure_point,
     departure_date_time: departure_date_time,
-    price: price,
-    seats: seats,
-    features: features,
+    price: (100..1000).to_a.sample,
+    seats: (1..20).to_a.sample,
+    features: create_features,
     user_id: user.id
   }
 
   new_trip = Trip.new(attributes_hash)
   # new_trip.photo.attach(io: photo, filename: "#{i}.jpg", content_type: "image/jpg")
-  new_trip.save
+  new_trip.save!
   puts "created trip"
 end
 

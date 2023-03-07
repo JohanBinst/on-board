@@ -1,0 +1,29 @@
+.trip-card {
+  margin: 20px;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  box-shadow: 0 0 10px #D3D3D3;
+  cursor: pointer;
+}
+
+.card-title {
+  color: #949494;
+}
+
+.card-title p {
+  font-size: small;
+  color: #949494;
+}
+
+.btn-card-book {
+  width: 125px;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: #8E7258;
+  padding: 7px;
+}
+
+.btn-card-book:hover {
+  background-color: #FFEBCD;
+  transition: 0.5s;
+}

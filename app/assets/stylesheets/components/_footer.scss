@@ -1,0 +1,29 @@
+.page-footer {
+  padding-top: 5.5em;
+  background-color: #003865;
+  color: #E6F4F1;
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+}
+
+.list-unstyled > li > a {
+  color: #E6F4F1;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.footer-copyright {
+  font-size: small;
+  margin-top: 50px;
+}
+
+.text-uppercase {
+  font-weight: bold;
+}
+
+#content {
+  text-align: left;
+  padding-left: 50px;
+}

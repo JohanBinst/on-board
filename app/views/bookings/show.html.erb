@@ -1,0 +1,24 @@
+
+<h1>Trip details</h1>
+<p><strong>Trip name:</strong> <%= @trip.name %> | <strong> hosted by:</strong> <%= @trip.user.first_name %></p>
+<%# <%= cl_image_tag @trip.photo.key, height: 250, crop: :fill %>
+<%# <% if @trip.photo.attached? %>
+<%# <% end %>
+
+<h4>This trip is passionately hosted by: <%= @trip.user.first_name %> </h4>
+
+<div class="trip_detail">
+  <div class="trip_description">
+    <%= @trip.description %></p>
+    <p><strong>Activities include:</strong> <%= @trip.activity_type %></p>
+    <p><strong>Trip departs from:</strong> <%= @trip.departure_point %></p>
+    <p><strong>Departure time is:</strong> <%= @trip.departure_date_time %>, please be present 30' before departure time</p>
+
+    <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
+    <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
+    <p><strong>Included in this booking:</strong> <%= @trip.features %></p>
+
+  </div>
+
+  <%# link_to "edit your booking", edit_booking_path(@booking) %>
+</div>

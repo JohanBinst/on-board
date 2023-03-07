@@ -1,0 +1,30 @@
+<h1>Your booking history</h1>
+<p>Hello <%= current_user.first_name %>, these are the trips you've booked</p>
+
+<div class="row">
+  <% if @bookings.empty? %>
+    <p>You have no current bookings</p>
+  <% else %>
+    <% @bookings.each do |booking| %>
+      <div class="col-lg-4 mb-2">
+        <div class="card-body border p-3 bg-white border-radius: 2px">
+          <h5 class="card-title">You booked: <%= booking.trip.name %></h5>
+          <p class="card-text">Going to: <%= booking.trip.destination %></p>
+          <p class="card-text">For a total of: <%= booking.total_guests %> guests </p>
+          <p class="card-text">Total price: <%= number_to_currency(booking.total_price, unit: "USD") %></p>
+          <p class="card-text">Booking created on <%= booking.created_at.strftime("%d/%m/%Y") %></p>
+
+          <h5 class="card-title">Your trip <%= booking.trip.name %> details </h5>
+          <p class="card-text"> Trip Departure time <%= booking.trip.departure_date_time %></p>
+          <p class="card-text"> Trip Departure location <%= booking.trip.departure_point %></p>
+          <p class="card-text"> Included in your booking: <%= booking.trip.features %> </p>
+          <%= link_to "Full trip details", booking_path(booking) %>
+
+          <%= link_to "Cancel booking", booking_path(booking),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?" },
+                class: "btn btn-warning" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

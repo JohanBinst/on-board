@@ -1,17 +1,17 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-p "Removing trips and users..."
+puts "Removing trips and users..."
 Trip.destroy_all
 User.destroy_all
-p "All trips and users removed ..."
+puts "All trips and users removed ..."
 
-p "Creating users and save to database"
+puts "Creating users and save to database"
 
 names = %w(Anthony Shannaz Tan Johan)
 
 names.each do |name|
-  email = "#{name}@feeling_blue.com"
+  email = "#{name.downcase}@gmail.com"
   new_user = User.new(email:, password: "password", first_name: name, last_name: "Last")
   new_user.save!
 end
@@ -38,12 +38,11 @@ def create_activity
     "Kayaking",
     "Paddleboarding",
     "Surfing",
-    "Beach Volleyball",
     "Fishing",
     "Sailing",
-    "Jet Skiing",
+    "Jet-Skiing",
     "Beachcombing",
-    "Sunbathing"
+    "Spearfishing"
   ]
   activities.sample
 end
@@ -106,14 +105,15 @@ def create_description
   descriptions.sample
 end
 
-p "Creating 10 trips ..."
+puts "Creating 10 trips ..."
 10.times do |i|
-  photo = URI.open("https://unsplash.com/s/photos/beach-activities")
+  activity = create_activity
+  # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_date_time = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 7, period: :morning) #=> "2014-09-19 08:07:52 -0700"
   attributes_hash = {
     name: create_name,
-    activity_type: create_activity,
+    activity_type: activity,
     description: create_description,
     destination: create_destination,
     departure_point: create_departure_point,
@@ -121,13 +121,25 @@ p "Creating 10 trips ..."
     price: (100..1000).to_a.sample,
     seats: (1..20).to_a.sample,
     features: create_features,
-    user_id: user.id
+    user_id: user.id,
   }
 
   new_trip = Trip.new(attributes_hash)
-  # new_trip.photo.attach(io: photo, filename: "#{i}.jpg", content_type: "image/jpg")
+
+  blobs_array = []
+  4.times do |n|
+    puts "looking for photos, photo #{n + 1}/4"
+    photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
+    blob = { io: photo, filename: "#{i}.jpg", content_type: "image/jpg" }
+    blobs_array << blob
+  end
+  puts "attaching photos"
+  new_trip.photos.attach(blobs_array)
+  thumbnail = URI.open("https://source.unsplash.com/random/640x480/?#{activity}")
+  new_trip.thumbnail.attach(io: thumbnail, filename: "thumbnail.jpg", content_type: "image/jpg")
+  puts "trip thumbnail attached"
   new_trip.save!
-  puts "created trip"
+  puts "created trip #{i + 1}/10"
 end
 
 p "10 trips created"

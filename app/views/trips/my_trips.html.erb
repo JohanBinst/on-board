@@ -1,0 +1,18 @@
+<h1>Trip management</h1>
+
+<p>Hello <%= @current_user.first_name %>, these are the trips you've created :</p>
+
+<div class="row">
+  <div class="col-lg-3">
+
+      <% @trips.each do |trip| %>
+        <div class="card mb-2">
+          <%= trip.name %>
+          <%= trip.departure_date_time %>
+          <%= link_to "", trip_path(trip),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this trip ?" },
+            class: "fa-solid fa-trash-can" %>
+        </div>
+      <% end %>
+  </div>
+</div>

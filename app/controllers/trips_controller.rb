@@ -22,11 +22,24 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @booking = Booking.new
   end
 
-  private
+  def my_trips
+    # @user = current_user
+    @trips = Trip.where(user_id: current_user.id)
+  end
 
+  def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to my_trips_path(current_user), status: :see_other
+  end
+  
+  private
+  
   def trip_params
     params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :description, :features, :price, :seats)
   end
+
 end

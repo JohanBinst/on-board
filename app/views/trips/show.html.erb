@@ -3,6 +3,13 @@
 <%= @trip.name %>
 <%= @trip.destination %>
 
+<div>
+  <% if @trip.photos.attached? %>
+    <% @trip.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 200, crop: :fill %>
+    <% end %>
+  <% end %>
+
 <div class="booking_form">
   <p>
     <%= simple_form_for([@trip, @booking]) do |f| %>

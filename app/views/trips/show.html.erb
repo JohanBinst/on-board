@@ -1,8 +1,5 @@
 <h1>Trips#show</h1>
 
-<%= @trip.name %>
-<%= @trip.destination %>
-
 <div>
   <% if @trip.photos.attached? %>
     <% @trip.photos.each do |photo| %>
@@ -10,11 +7,13 @@
     <% end %>
   <% end %>
 
+<h1><%= @trip.name %></h1>
+<%= @trip.destination %>
+
+<h5>Book now</h5>
 <div class="booking_form">
-  <p>
     <%= simple_form_for([@trip, @booking]) do |f| %>
       <%= f.input :total_guests, as: :integer %>
-      <%= f.submit "Reserve", class: "btn btn-success" %>
+      <%= f.submit "Book now", class: "btn btn-success" %>
     <% end %>
-  </p>
 </div>

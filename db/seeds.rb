@@ -122,6 +122,7 @@ puts "Creating 10 trips ..."
     seats: (1..20).to_a.sample,
     features: create_features,
     user_id: user.id,
+    start_time: departure_date_time.beginning_of_day,
   }
 
   new_trip = Trip.new(attributes_hash)

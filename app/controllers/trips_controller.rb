@@ -14,5 +14,6 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @booking = Booking.new
   end
 end

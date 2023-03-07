@@ -1,7 +1,56 @@
 class Trip < ApplicationRecord
+  DEPARTURE = [
+    "Orphelinat Bay",
+    "Aquarêve",
+    "Port Plaisance",
+    "Port du Sud",
+    "Port Moselle",
+    "Ouano",
+    "Tomo"
+  ]
+
+  DESTINATION = [
+    "Dumbea pass",
+    "Ilot Tenia",
+    "False pass",
+    "Amédée lighthouse",
+    "Outer reef",
+    "Ilot Signal",
+    "Ilot Maitre",
+    "Ilot Goeland"
+  ]
+
+  ACTIVITIES = [
+    "Snorkeling",
+    "Kayaking",
+    "Paddleboarding",
+    "Surfing",
+    "Kiteboarding",
+    "Windsurfing",
+    "Diving",
+    "Wingfoiling",
+    "Wakeboaring",
+    "Fishing",
+    "Sailing",
+    "Spearfishing",
+    "Flyfishing"
+  ]
+
+  FEATURES_LIST = [
+    "fishing gears",
+    "first aids",
+    "snorkel",
+    "meals",
+    "drinks",
+    "speaker",
+    "insurance",
+    "sunsreen",
+    "towels"
+  ]
+
   has_many :bookings, dependent: :destroy
   belongs_to :user
-  validates :name, :activity_type, :destination, :departure_point, :description, :features, presence: true
+  validates :name, :activity_type, :destination, :departure_point, :start_time, :description, :features, presence: true
   validates :price, :seats, presence: true, comparison: { greater_than: 0 }
   # validates :departure_datetime, presence: true, timeliness: { after: -> { Time.now }, message: "must be after current time" }
 end

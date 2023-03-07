@@ -4,9 +4,17 @@ class TripsController < ApplicationController
   end
 
   def new
+    @trip = Trip.new
   end
 
   def create
+    @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
+    if @trip.save
+      redirect_to trip_path(@trip)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -27,6 +35,11 @@ class TripsController < ApplicationController
     @trip.destroy
     redirect_to my_trips_path(current_user), status: :see_other
   end
-
+  
+  private
+  
+  def trip_params
+    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :description, :features, :price, :seats)
+  end
 
 end

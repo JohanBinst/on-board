@@ -1,1 +1,15 @@
-// Specific CSS for your home-page
+.home_video {
+  position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translateX(calc((100% - 100vw) / 2));
+ }
+ .home-video-wrapper {
+ height: 100vh;
+ display: flex;
+ }
+ h1.home {
+   color: white;
+ }

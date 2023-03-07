@@ -9,4 +9,12 @@
       <%= cl_image_tag photo.key, height: 200, crop: :fill %>
     <% end %>
   <% end %>
+
+<div class="booking_form">
+  <p>
+    <%= simple_form_for([@trip, @booking]) do |f| %>
+      <%= f.input :total_guests, as: :integer %>
+      <%= f.submit "Reserve", class: "btn btn-success" %>
+    <% end %>
+  </p>
 </div>

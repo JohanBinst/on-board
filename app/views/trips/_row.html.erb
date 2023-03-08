@@ -1,0 +1,13 @@
+<div data-search-trips-target="row" >
+  <% trips.each do |trip| %>
+    <div class="col-lg-3">
+      <div class="card">
+        <% if trip.thumbnail.attached? %>
+          <%= cl_image_tag trip.thumbnail.key, height: 200, crop: :fill %>
+        <% end %>
+        <%= link_to trip.name, trip_path(trip) %>
+        <%= trip.destination %>
+      </div>
+    </div>
+  <% end %>
+</div>

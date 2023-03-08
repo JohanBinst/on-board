@@ -1,20 +1,10 @@
 <div class="container">
   <div class="home-video-wrapper">
-  <%= video_tag "Beachfb.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
+  <%= video_tag "feelbluevid.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
 <h1 class="home"> Find The Best Trips On The Lagoon</h1>
   </div>
 </div>
-<div class="row">
-  <% @trips.each do |trip| %>
-    <div class="col-lg-3">
-      <div class="card">
-        <% if trip.thumbnail.attached? %>
-          <%= cl_image_tag trip.thumbnail.key, height: 200, crop: :fill %>
-        <% end %>
-        <%= link_to trip.name, trip_path(trip) %>
-        <%= trip.destination %>
-      </div>
-    </div>
-  <% end %>
 
-</div>
+<%= render 'row', trips: @trips %>
+
+<%# <%= render partial: 'trips/index/row', locals: {trips: @trips} %>

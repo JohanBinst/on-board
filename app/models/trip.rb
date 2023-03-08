@@ -52,7 +52,6 @@ class Trip < ApplicationRecord
   belongs_to :user
   validates :name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, presence: true
   validates :price, :seats, presence: true, comparison: { greater_than: 0 }
-  # validates :departure_datetime, presence: true, timeliness: { after: -> { Time.now }, message: "must be after current time" }
   has_many_attached :photos
   has_one_attached :thumbnail
 

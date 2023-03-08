@@ -2,12 +2,12 @@ class TripsController < ApplicationController
   def index
     if params[:query].present? && params[:query].length > 0
       @trips = Trip.search_by_parameters(params[:query])
-      respond_to do |format|
-        format.html # Follow regular flow of Rails
-        format.text { render partial: "trips/row", locals: { trips: @trips }, formats: [:html] }
-      end
     else
       @trips = Trip.all
+    end
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "trips/row", locals: { trips: @trips }, formats: [:html] }
     end
   end
 
@@ -47,7 +47,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, :price, :seats)
+    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, :price, :seats, photos: [])
   end
 
 end

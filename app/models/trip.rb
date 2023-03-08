@@ -51,14 +51,12 @@ class Trip < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   belongs_to :user
-  validates :name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, presence: true
+  validates :name, :activity_type, :destination, :departure_date_time, :description, :features, :latitude, :longitude, presence: true
   validates :price, :seats, presence: true, comparison: { greater_than: 0 }
   # validates :departure_datetime, presence: true, timeliness: { after: -> { Time.now }, message: "must be after current time" }
   has_many_attached :photos
   has_one_attached :thumbnail
-  # Not necessary to geocode the departure points, already have latitude and longitude
-  # geocoded_by :departure_point
-  # after_validation :geocode, if: :will_save_change_to_departure_point?
+
   include PgSearch::Model
   pg_search_scope :search_by_parameters,
     against: [ :activity_type, :destination ],

@@ -6,7 +6,7 @@
 
   <div style="width: 100%; height: 600px;"
   data-controller="departure-point"
-  data-departure-point-marker-value="<%= @marker.to_json %>"
+  data-departure-point-departure-points-value="<%= Trip::DEPARTURE.to_json %>"
   data-departure-point-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 </div>

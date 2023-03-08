@@ -2,12 +2,15 @@
   <%= f.input :name %>
   <%= f.input :activity_type, :collection => Trip::ACTIVITIES,  prompt: 'Select Activity' %>
   <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Select Destination' %>
-  <%= f.input :departure_point, :collection => Trip::DEPARTURE.keys, prompt: 'Select Departure Point' %>
+
   <%= f.input :description %>
   <%= f.input :seats %>
   <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Select Features' %>
   <%= f.input :departure_date_time, as: :string, input_html: { data: {flatpickr_target: "departureDate"} } %>
   <%= f.input :price, label: 'Enter Price', prompt: '$' %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
+  <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
+  <%= f.input :departure_point, :collection => Trip::DEPARTURE.keys, prompt: 'Select Departure Point', id: "departure-point" %>
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
 <% end %>

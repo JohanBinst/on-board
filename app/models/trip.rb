@@ -55,4 +55,11 @@ class Trip < ApplicationRecord
   # validates :departure_datetime, presence: true, timeliness: { after: -> { Time.now }, message: "must be after current time" }
   has_many_attached :photos
   has_one_attached :thumbnail
+
+  include PgSearch::Model
+  pg_search_scope :search_by_parameters,
+    against: [ :activity_type, :destination ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

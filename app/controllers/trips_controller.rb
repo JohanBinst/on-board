@@ -7,7 +7,7 @@ class TripsController < ApplicationController
     end
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: "trips/row", locals: { trips: @trips }, formats: [:html] }
+      format.text { render partial: "trips/list", locals: { trips: @trips }, formats: [:html] }
     end
   end
 

@@ -61,18 +61,10 @@ def create_destination
   destinations.sample
 end
 
-def create_departure_point
-  departure_points = [
-    "Orphelinat Bay",
-    "Aquarêve",
-    "Port Plaisance",
-    "Port du Sud",
-    "Port Moselle",
-    "Ouano",
-    "Tomo"
-  ]
-  departure_points.sample
-end
+# def create_departure_point
+#   departure_points =
+#   departure_points.sample
+# end
 
 def create_features
   features_list = [
@@ -116,7 +108,7 @@ puts "Creating 10 trips ..."
     activity_type: activity,
     description: create_description,
     destination: create_destination,
-    departure_point: create_departure_point,
+    departure_point: Trip::DEPARTURE.keys.sample,
     departure_date_time: departure_date_time,
     price: (100..1000).to_a.sample,
     seats: (1..20).to_a.sample,

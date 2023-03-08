@@ -3,4 +3,10 @@
   <p>Enter the details below.</p>
 
   <%= render 'form', trip: @trip %>
+
+  <div style="width: 100%; height: 600px;"
+  data-controller="departure-point"
+  data-departure-point-marker-value="<%= @marker.to_json %>"
+  data-departure-point-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 </div>

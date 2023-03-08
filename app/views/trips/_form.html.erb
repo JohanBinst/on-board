@@ -8,5 +8,6 @@
   <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Select Features' %>
   <%= f.input :departure_date_time, as: :string, input_html: { data: {flatpickr_target: "departureDate"} } %>
   <%= f.input :price, label: 'Enter Price', prompt: '$' %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
 <% end %>

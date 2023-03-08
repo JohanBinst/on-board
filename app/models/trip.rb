@@ -59,4 +59,11 @@ class Trip < ApplicationRecord
   # Not necessary to geocode the departure points, already have latitude and longitude
   # geocoded_by :departure_point
   # after_validation :geocode, if: :will_save_change_to_departure_point?
+  include PgSearch::Model
+  pg_search_scope :search_by_parameters,
+    against: [ :activity_type, :destination ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end

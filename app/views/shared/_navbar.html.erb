@@ -3,7 +3,31 @@
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
-     <h2>Search bar here</h2>
+
+<%# SEARCH NAVBAR FUNCTION %>
+    <%# <div class="search-container">
+      <%= form_with url: trips_path, method: :get, class: "search" do %>
+        <%# <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Search activities ... " %>
+         <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+      <%# <% end
+    </div> %>
+
+    <%# ///// NEW SEARCH WITH KEYUP ////// %>
+    <div>
+      <%= form_with url: trips_path, method: :get, html: {class:
+      "mb-4", data: {search_trips_target: "form"}} do |f| %>
+          <%= f.text_field :query,
+          data: {search_trips_target: "input",
+            action: "keyup->search-trips#update"},
+            class: "form-control",
+            placeholder: "Search activities ... ",
+            value: params[:query]%>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

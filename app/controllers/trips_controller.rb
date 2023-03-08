@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    if params[:query].present?
+      @trips = Trip.search_by_parameters(params[:query])
+    else
+      @trips = Trip.all
+    end
   end
 
   def new

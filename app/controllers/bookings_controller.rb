@@ -9,15 +9,19 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @trip = Trip.find(params[:trip_id])
-    @booking.trip = @trip
-    @booking.user = current_user
-    @booking.total_price = @trip.price * @booking.total_guests
-    if @booking.save
-      redirect_to booking_path(@booking), status: :see_other
+    if current_user.nil?
+      redirect_to new_user_session_path, status: :see_other
     else
-      render 'trips/show', status: :unprocessable_entity
+      @booking = Booking.new(booking_params)
+      @trip = Trip.find(params[:trip_id])
+      @booking.trip = @trip
+      @booking.user = current_user
+      @booking.total_price = @trip.price * @booking.total_guests
+      if @booking.save
+        redirect_to booking_path(@booking), status: :see_other
+      else
+        render 'trips/show', status: :unprocessable_entity
+      end
     end
   end
 

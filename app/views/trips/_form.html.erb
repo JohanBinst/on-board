@@ -35,6 +35,7 @@
         </div>
       </div>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false } %>
     </div>
       <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
       <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>

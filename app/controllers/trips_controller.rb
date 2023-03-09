@@ -50,7 +50,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.required(:trip).permit(:name, { activity_type: [] }, { features: [] }, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :price, :seats, photos: [])
+    params.required(:trip).permit(:name, { activity_type: [] }, { features: [] }, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :price, :seats,:thumbnail, photos: [])
   end
 
 end

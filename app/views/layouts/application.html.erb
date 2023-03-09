@@ -17,9 +17,12 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div data-controller="search-trips">
-      <%= yield %>
+    <div class="container">
+      <div data-controller="search-trips">
+        <%= yield %>
+      </div>
     </div>
+
 
   </body>
 

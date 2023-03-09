@@ -1,15 +1,33 @@
-.home_video {
+.home-video-wrapper {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-video-wrapper .video-container {
   position: absolute;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translateX(calc((100% - 100vw) / 2));
- }
- .home-video-wrapper {
- height: 100vh;
- display: flex;
- }
- h1.home {
-   color: white;
- }
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.home_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-title {
+  color: white;
+}
+
+h1 {
+  font-size: xxx-large;
+  font-weight: 900;
+  text-transform: uppercase;
+}

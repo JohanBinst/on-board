@@ -7,7 +7,7 @@ class TripsController < ApplicationController
     end
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: "trips/list", locals: { trips: @trips }, formats: [:html] }
+      format.text { render partial: "trips/card", locals: { trips: @trips }, formats: [:html] }
     end
   end
 
@@ -50,7 +50,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :features, :price, :seats, photos: [])
+    params.required(:trip).permit(:name, { activity_type: [] }, { features: [] }, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :price, :seats, photos: [])
   end
 
 end

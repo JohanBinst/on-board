@@ -4,6 +4,15 @@
 // Define fonts for body and headers
 $body-font: "Open sans", "Helvetica", "sans-serif";
 $headers-font: "Open sans", "Helvetica", "sans-serif";
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 1.5rem
+);
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

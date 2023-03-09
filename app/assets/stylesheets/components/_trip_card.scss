@@ -1,13 +1,25 @@
 .trip-card {
   margin: 20px;
-  border: 1px solid rgb(230, 230, 230);
-  border-radius: 4px;
+  overflow: hidden;
+  border-radius: 7px;
   box-shadow: 0 0 10px #D3D3D3;
   cursor: pointer;
 }
 
-.card-title {
-  color: #949494;
+.card-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.card-image {
+  border-radius: 7px 7px;
+}
+
+.activity-title a {
+  color: black;
+  font-weight: 400;
+  text-decoration: none;
 }
 
 .card-title p {
@@ -15,15 +27,35 @@
   color: #949494;
 }
 
-.btn-card-book {
-  width: 125px;
-  margin-top: 20px;
-  border-radius: 5px;
-  color: #8E7258;
-  padding: 7px;
+.btn-primary-trip {
+  margin-top: 9px;
+  margin-bottom: 15px;
+  background: none;
+  border: 1px solid #21B374;
+  border-radius: 4px;
+  width: 120px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-.btn-card-book:hover {
-  background-color: #FFEBCD;
+.btn-primary-trip a {
+  text-decoration: none;
+  color: #21B374;
+  font-size: smaller;
+}
+
+.btn-primary-trip:hover {
+  background-color: #26a36d;
   transition: 0.5s;
+}
+
+.btn-primary-trip:hover a {
+  color: white;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

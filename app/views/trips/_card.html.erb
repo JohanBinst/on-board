@@ -1,0 +1,30 @@
+<div data-search-trips-target="card" >
+  <div class="row">
+    <% trips.each do |trip| %>
+      <div class="col-lg-3">
+      <%= link_to trip_path(trip.id) do %>
+        <div class="trip-card">
+          <div class="card-image">
+            <% if trip.thumbnail.attached? %>
+              <%= cl_image_tag trip.thumbnail.key, height: 200, crop: :fill %>
+            <% end %>
+          </div>
+          <div class="card-content">
+            <div class="activity-title">
+              <%= link_to trip.activity_type, trip_path(trip) %>
+            </div>
+            <p class="card-subtitle mb-0 mt-1 font-weight-bold text-secondary">
+              <%= trip.destination %>
+              <br>
+              $<%= trip.price %> per day
+            </p>
+          </div>
+            <div class="d-block mx-auto btn btn-primary-trip">
+              <%= link_to "Book", trip_path(trip) %>
+            </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-trips"
 export default class extends Controller {
-  static targets = [ "form", "input", "list" ]
+  static targets = [ "form", "input", "card" ]
   connect() {
   }
 
@@ -12,7 +12,7 @@ export default class extends Controller {
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
-        this.listTarget.outerHTML = data
+        this.cardTarget.outerHTML = data
       })
   }
 }

@@ -56,6 +56,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "timeliness"
 gem "faker"
 gem "cloudinary"
+gem "geocoder"
+
 gem "dotenv-rails", groups: [:development, :test]
 gem "pg_search"
 

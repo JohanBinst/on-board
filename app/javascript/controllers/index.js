@@ -4,11 +4,17 @@
 
 import { application } from "./application"
 
+import DeparturePointController from "./departure_point_controller"
+application.register("departure-point", DeparturePointController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
 
 import SearchTripsController from "./search_trips_controller"
 application.register("search-trips", SearchTripsController)

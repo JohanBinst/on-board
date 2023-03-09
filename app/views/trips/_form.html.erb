@@ -1,6 +1,6 @@
 <%= simple_form_for @trip, data: { controller: 'flatpickr'} do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-12">
       <div class="row">
         <div class="col-md-4">
           <%= f.input :name, placeholder: "Trip name" %>
@@ -13,14 +13,16 @@
         </div>
       </div>
       <%= f.input :description %>
+
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true %>
+          <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
         </div>
         <div class="col-md-6">
           <%= f.input :features, as: :check_boxes, :collection => Trip::FEATURES_LIST, prompt: 'Features', multiple: true %>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-4">
           <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point' %>
@@ -34,10 +36,8 @@
       </div>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     </div>
-    <div class="col-md-6">
       <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
       <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
-    </div>
   </div>
 
   <%= f.submit 'Add my trip', class:'btn btn-success' %>

@@ -31,6 +31,9 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @booking = Booking.new
+    # lat , long 166.441671
+    # @marker = Trip::DEPARTURE[@trip.departure_point.to_sym]
+    @marker = { lat: @trip.latitude, lng: @trip.longitude }
   end
 
   def my_trips
@@ -47,7 +50,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, :price, :seats, photos: [])
+    params.required(:trip).permit(:name, { activity_type: [] }, { features: [] }, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :price, :seats, photos: [])
   end
 
 end

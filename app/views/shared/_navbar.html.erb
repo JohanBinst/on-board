@@ -4,17 +4,6 @@
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
-<%# SEARCH NAVBAR FUNCTION %>
-    <%# <div class="search-container">
-      <%= form_with url: trips_path, method: :get, class: "search" do %>
-        <%# <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Search activities ... " %>
-         <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-      <%# <% end
-    </div> %>
-
-    <%# ///// NEW SEARCH WITH KEYUP ////// %>
     <div>
       <%= form_with url: trips_path, method: :get, html: {class:
       "mb-4", data: {search_trips_target: "form"}} do |f| %>
@@ -26,7 +15,6 @@
             value: params[:query]%>
           <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
-
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,11 +30,14 @@
           <li class="nav-item">
             <%= link_to "My trips", my_trips_path(current_user), class: "nav-link" %>
           </li>
+
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+
+              <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
+              <%= link_to "My trips", my_trips_path(current_user), class: "dropdown-item" %>
+
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

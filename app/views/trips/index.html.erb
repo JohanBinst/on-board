@@ -1,11 +1,13 @@
 <div class="container">
   <div class="home-video-wrapper">
   <%= video_tag "feelbluevid.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
-<h1 class="home"> Find The Best Trips On The Lagoon</h1>
+<h1 class="home"> The Best Trips On The Lagoon</h1>
   </div>
 </div>
 <h2 class="text-center text-secondary">Recently Added Trips & Activities</h2>
 
 <%= render 'card', trips: @trips %>
+
+
 
 <%# <%= render partial: 'trips/index/row', locals: {trips: @trips} %>

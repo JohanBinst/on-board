@@ -1,25 +1,70 @@
-<h1>Trips#show</h1>
-
-<div>
-  <% if @trip.photos.attached? %>
-    <% @trip.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 200, crop: :fill %>
-    <% end %>
-  <% end %>
 
 <h1><%= @trip.name %></h1>
-<%= @trip.destination %>
+<h4><%= @trip.destination %></h4>
 
-<h5>Book now</h5>
-<div class="booking_form">
-    <%= simple_form_for([@trip, @booking]) do |f| %>
+<% if @trip.photos.attached? %>
+  <div class="photos-wrapper m-3">
+    <div class="row gx-2">
+      <div class="col-6">
+        <%= cl_image_tag @trip.thumbnail.key, class: "w-100", :gravity=>"auto", crop: :fill %>
+      </div>
+      <div class="col-6">
+        <% n = 1 %>
+        <% @trip.photos.each_slice(2) do |slice| %>
+          <div class="row gx-2">
+            <% slice.each do |photo| %>
+              <div class="col-6">
+                <%= cl_image_tag photo.key, class: "w-100 mb-#{n}", :gravity=>"auto", crop: :fill %>
+              </div>
+            <% end %>
+            <% n = 0 %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-8">
+    <h3><%= @trip.activity_type %></h3>
+    <div class="description">
+      <h5>Description</h5>
+      <p><%= @trip.description %></p>
+    </div>
+    <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="booking_form">
+      <h5>Book now</h5>
+      <%= simple_form_for([@trip, @booking]) do |f| %>
       <%= f.input :total_guests, as: :integer %>
       <%= f.submit "Book now", class: "btn btn-success" %>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-marker-value="<%= @marker.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+
+
+
+
+
+
+
+<%# masonry grid %>
+<%# if false %>
+  <%# <div data-controller="masonry"> %>
+    <%# @trip.photos.each do |photo| %>
+      <%# <div class="grid-item"> %>
+        <%# cl_image_tag photo.key, class: "w-100 shadow-1-strong rounded", crop: :fill %>
+      <%# </div> %>
+    <%# end %>
+  <%# </div> %>
+<%# end %>

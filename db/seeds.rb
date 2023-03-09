@@ -130,7 +130,7 @@ puts "Creating 10 trips ..."
   end
   puts "attaching photos"
   new_trip.photos.attach(blobs_array)
-  thumbnail = URI.open("https://source.unsplash.com/random/640x480/?#{activity}")
+  thumbnail = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   new_trip.thumbnail.attach(io: thumbnail, filename: "thumbnail.jpg", content_type: "image/jpg")
   puts "trip thumbnail attached"
   new_trip.save!

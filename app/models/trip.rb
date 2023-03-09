@@ -3,7 +3,7 @@ class Trip < ApplicationRecord
     'Orphelinat Bay': { lat: -22.288932, lng:  166.441671 },
     'Côte Blanche': { lat: -22.309739, lng: 166.458233 },
     'Port Plaisance': { lat: -22.290046, lng: 166.437332 },
-    'Port du Sud': { lat: 22.284205, lng: 166.441732 },
+    'Port du Sud': { lat: -22.284205, lng: 166.441732 },
     'Port Moselle': { lat: -22.278822, lng: 166.438138 },
     'Ouano': { lat: -21.842394, lng: 165.809028 },
     'Tomo': { lat: -21.959447, lng: 166.138428 }

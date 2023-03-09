@@ -51,7 +51,7 @@ class Trip < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   belongs_to :user
-  validates :name, :activity_type, :destination, :departure_date_time, :description, :features, :latitude, :longitude, presence: true
+  validates :name, :activity_type, :destination, :departure_date_time, :description, :departure_point, :features, :latitude, :longitude, presence: true
   validates :price, :seats, presence: true, comparison: { greater_than: 0 }
   has_many_attached :photos
   has_one_attached :thumbnail

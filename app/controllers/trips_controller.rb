@@ -13,13 +13,10 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
-    @marker = { lat: -22.288932, lng: 166.441671 }
   end
 
   def create
     @trip = Trip.new(trip_params)
-    #try this if current departure poits don't work with geocoder
-    # @trip.departure_address = "#{@trip.departure_point}, Noumea"
     @trip.user_id = current_user.id
     if @trip.save
       redirect_to trip_path(@trip)
@@ -35,7 +32,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @booking = Booking.new
     # lat , long 166.441671
-    @marker = Trip::DEPARTURE[@trip.departure_point.to_sym]
+    # @marker = Trip::DEPARTURE[@trip.departure_point.to_sym]
+    @marker = { lat: @trip.latitude, lng: @trip.longitude }
   end
 
   def my_trips
@@ -52,7 +50,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :departure_date_time, :description, :features, :price, :seats, photos: [])
+    params.required(:trip).permit(:name, :activity_type, :destination, :departure_point, :latitude, :longitude, :departure_date_time, :description, :features, :price, :seats, photos: [])
   end
 
 end

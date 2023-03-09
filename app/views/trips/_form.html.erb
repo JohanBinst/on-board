@@ -1,13 +1,29 @@
 <%= simple_form_for @trip, data: { controller: 'flatpickr'} do |f| %>
-  <%= f.input :name %>
-  <%= f.input :activity_type, :collection => Trip::ACTIVITIES,  prompt: 'Select Activity' %>
-  <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Select Destination' %>
-  <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Select Departure Point' %>
+  <%= f.input :name, placeholder: "Trip name" %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :activity_type, :collection => Trip::ACTIVITIES,  prompt: 'Activity', as: :check_boxes %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Features', as: :check_boxes %>
+    </div>
+  </div>
+
   <%= f.input :description %>
-  <%= f.input :seats %>
-  <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Select Features' %>
+  <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Destination' %>
+  <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point' %>
   <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} } %>
-  <%= f.input :price, label: 'Enter Price', prompt: '$' %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :seats %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :price, label: 'Price per customer', prompt: '$' %>
+    </div>
+  </div>
+
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
 <% end %>

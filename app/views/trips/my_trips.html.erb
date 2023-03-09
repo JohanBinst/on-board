@@ -3,7 +3,7 @@
 <p>Hello <%= @current_user.first_name %>, these are the trips you've created :</p>
 <p><%= link_to "Adding new trip", new_trip_path, class: "btn btn-primary" %></p>
 
-<div class="row">
+<div class="row card-grid">
   <div class="col-lg-3">
 
       <% @trips.each do |trip| %>

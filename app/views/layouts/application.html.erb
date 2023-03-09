@@ -15,13 +15,12 @@
   </head>
 
   <body>
-    <div class="content-wrapper" data-controller="search-trips">
-      <%= render "shared/navbar" %>
-      <%= render "shared/flashes" %>
-      <div class="container">
-        <%= yield %>
-      </div>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <div data-controller="search-trips">
+      <%= yield %>
     </div>
+
   </body>
 
   <%= render "shared/footer" %>

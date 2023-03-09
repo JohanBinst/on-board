@@ -4,19 +4,20 @@
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
-    <div>
+    <div class="d-flex justify-content-center search-bar">
       <%= form_with url: trips_path, method: :get, html: {class:
-      "mb-4", data: {search_trips_target: "form"}} do |f| %>
+      ".col-md-6", data: {search_trips_target: "form"}} do |f| %>
+      <div class="d-flex">
           <%= f.text_field :query,
           data: {search_trips_target: "input",
             action: "keyup->search-trips#update"},
             class: "form-control",
-            placeholder: "Search activities ... ",
+            placeholder: "Search activities...",
             value: params[:query]%>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+            <button type="submit" id="submit-icon"><i class="fa fa-search"></i></button>
+              </div>
       <% end %>
-    </div>
-
+      </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

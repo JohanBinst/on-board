@@ -2,13 +2,12 @@
   <%= f.input :name, placeholder: "Trip name" %>
   <div class="row">
     <div class="col-md-6">
-      <%= f.input :activity_type, :collection => Trip::ACTIVITIES,  prompt: 'Activity', as: :check_boxes %>
+      <%= f.input :activity_type, :collection => Trip::ACTIVITIES,  prompt: 'Activity'%>
     </div>
     <div class="col-md-6">
-      <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Features', as: :check_boxes %>
+      <%= f.input :features, :collection => Trip::FEATURES_LIST, prompt: 'Features'%>
     </div>
   </div>
-
   <%= f.input :description %>
   <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Destination' %>
   <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point' %>
@@ -21,9 +20,8 @@
       <%= f.input :price, label: 'Price per customer', prompt: '$' %>
     </div>
   </div>
-
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-
-
+  <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
+  <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
 <% end %>

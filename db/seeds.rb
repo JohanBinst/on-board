@@ -61,18 +61,10 @@ def create_destination
   destinations.sample
 end
 
-def create_departure_point
-  departure_points = [
-    "Orphelinat Bay",
-    "Aquarêve",
-    "Port Plaisance",
-    "Port du Sud",
-    "Port Moselle",
-    "Ouano",
-    "Tomo"
-  ]
-  departure_points.sample
-end
+# def create_departure_point
+#   departure_points =
+#   departure_points.sample
+# end
 
 def create_features
   features_list = [
@@ -110,13 +102,16 @@ puts "Creating 10 trips ..."
   activity = create_activity
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
+  departure_point = Trip::DEPARTURE.keys.sample
   departure_date_time = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 7, period: :morning) #=> "2014-09-19 08:07:52 -0700"
   attributes_hash = {
     name: create_name,
     activity_type: activity,
     description: create_description,
     destination: create_destination,
-    departure_point: create_departure_point,
+    departure_point: departure_point,
+    latitude: Trip::DEPARTURE[departure_point][:lat],
+    longitude: Trip::DEPARTURE[departure_point][:lng],
     departure_date_time: departure_date_time,
     price: (100..1000).to_a.sample,
     seats: (1..20).to_a.sample,

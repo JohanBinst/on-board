@@ -1,14 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 // import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
-
-const departure = document.getElementById('trip_departure_point');
-const lat = document.getElementById('trip_latitude');
-const lng = document.getElementById('trip_longitude');
-const mapCenter = { lng: 166.45136622553366, lat: -22.272158289730115 }
+const lat = document.getElementById('trip_latitude')
+const lng = document.getElementById('trip_longitude')
 
 // Connects to data-controller="departure-point"
 export default class extends Controller {
-
   static values = {
     apiKey: String,
     departurePoints: Object
@@ -17,7 +13,10 @@ export default class extends Controller {
   static targets = ["lat", "lng"]
 
   connect() {
-    console.log("8:54")
+    console.log("8:58")
+
+    const departure = document.getElementById('trip_departure_point')
+    const mapCenter = { lng: 166.45136622553366, lat: -22.272158289730115 }
 
     mapboxgl.accessToken = this.apiKeyValue
 

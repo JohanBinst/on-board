@@ -19,5 +19,8 @@ application.register("map", MapController)
 import MasonryController from "./masonry_controller"
 application.register("masonry", MasonryController)
 
+import NavbarController from "./navbar_controller"
+application.register("navbar", NavbarController)
+
 import SearchTripsController from "./search_trips_controller"
 application.register("search-trips", SearchTripsController)

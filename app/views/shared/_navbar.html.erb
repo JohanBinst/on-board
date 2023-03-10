@@ -1,3 +1,4 @@
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
@@ -7,17 +8,16 @@
     <div class="d-flex justify-content-center search-bar">
       <%= form_with url: trips_path, method: :get, html: {class:
       ".col-md-6", data: {search_trips_target: "form"}} do |f| %>
-      <div class="d-flex">
+        <div class="d-flex">
           <%= f.text_field :query,
-          data: {search_trips_target: "input",
-            action: "keyup->search-trips#update"},
+            data: {search_trips_target: "input", action: "keyup->search-trips#update"},
             class: "form-control",
             placeholder: "Search activities...",
-            value: params[:query]%>
-            <button type="submit" id="submit-icon"><i class="fa fa-search"></i></button>
-              </div>
+            value: params[:query] %>
+          <button type="submit" id="submit-icon"><i class="fa fa-search"></i></button>
+        </div>
       <% end %>
-      </div>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

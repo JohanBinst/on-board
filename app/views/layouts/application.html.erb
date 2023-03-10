@@ -15,10 +15,10 @@
 
   </head>
 
-  <body>
+  <body data-controller="search-trips">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div data-controller="search-trips" class="mt-4">
+    <div>
       <%= yield %>
     </div>
 

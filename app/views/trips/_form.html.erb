@@ -17,29 +17,31 @@
     <%# activity type and features %>
       <div class="row">
         <div class="col-md-6">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Activity types
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Acvitity types
             </button>
-            <ul class="dropdown-menu">
-              <li>
-                <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
-              </li>
-            </ul>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
+            </div>
           </div>
         </div>
+
         <div class="col-md-6">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Features
             </button>
-            <ul class="dropdown-menu">
-              <li>
-                <%= f.input :features, as: :check_boxes, :collection => Trip::FEATURES_LIST, prompt: 'Features', multiple: true %>
-              </li>
-            </ul>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+             <%= f.input :features, as: :check_boxes, :collection => Trip::FEATURES_LIST, prompt: 'Features', multiple: true %>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -80,4 +82,5 @@
       <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
   </div>
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
+
 <% end %>

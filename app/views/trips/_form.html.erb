@@ -1,45 +1,86 @@
+
+<h2>New trip</h2>
 <%= simple_form_for @trip, data: { controller: 'flatpickr'} do |f| %>
   <div class="row">
+    <%# name and destination %>
     <div class="col-12">
       <div class="row">
-        <div class="col-md-4">
-          <%= f.input :name, placeholder: "Trip name" %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :seats %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :price, label: 'Price per customer', prompt: '$' %>
-        </div>
-      </div>
-      <%= f.input :description %>
-
-      <div class="row">
         <div class="col-md-6">
-          <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
+          <%= f.input :name, placeholder: "Trip name", label: false %>
         </div>
         <div class="col-md-6">
-          <%= f.input :features, as: :check_boxes, :collection => Trip::FEATURES_LIST, prompt: 'Features', multiple: true %>
+          <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Destination', placeholder: "Destination", label: false %>
         </div>
+      </div>
+    </div>
+    <div class="col-12">
+    <%# activity type and features %>
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Acvitity types
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Features
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+             <%= f.input :features, as: :check_boxes, :collection => Trip::FEATURES_LIST, prompt: 'Features', multiple: true %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12">
+      <%= f.input :description, placeholder: "Trip description", label: false %>
+    </div>
+      <h3>Departure details</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point', placeholder: "Departure Point", label: false %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} }, placeholder: "Departure Date Time", label: false %>
+      </div>
+    </div>
+
+    <h3>Price & spots</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :seats, placeholder: "Seats", label: false %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :price, label: 'Price per customer', prompt: '$', placeholder: "Price per customer", label: false %>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point' %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Destination' %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} } %>
-        </div>
+    </div>
+
+    <h3>photos</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, placeholder: "Insert photos", label: false %>
       </div>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false } %>
+      <div class="col-md-6">
+        <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false }, placeholder: "Insert thumbnail", label: false %>
+      </div>
     </div>
       <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
       <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
   </div>
-
   <%= f.submit 'Add my trip', class:'btn btn-success' %>
+
 <% end %>

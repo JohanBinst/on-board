@@ -47,9 +47,22 @@
         <% end %>
       </div>
     </div>
+    <div data-controller="weather">
+        <div data-weather-target="result">
+          <div class="card weather-card">
+            <div class="card-body">
+              <h5 class="location" data-weather-target="city"> Noumea</h5>
+              <p class="icon" data-weather-target="icon">icon: </p>
+              <p class="description" data-weather-target="description">Description: </p>
+              <p class="temperature" data-weather-target="temperature"> Temperature: </p>
+              <p class="wind" data-weather-target="wind">Wind: </p>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
-
 </div>
+
 
 <%# masonry grid %>
 <%# if false %>

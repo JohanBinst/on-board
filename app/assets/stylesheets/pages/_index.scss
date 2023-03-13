@@ -1,3 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show_page";
+
+body {
+  position: relative;
+  min-height: 100vh;
+}

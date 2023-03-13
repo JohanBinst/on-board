@@ -10,17 +10,20 @@ application.register("departure-point", DeparturePointController)
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+// import HelloController from "./hello_controller"
+// application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import MasonryController from "./masonry_controller"
-application.register("masonry", MasonryController)
+// import MasonryController from "./masonry_controller"
+// application.register("masonry", MasonryController)
+
+import MovingImageController from "./moving_image_controller"
+application.register("moving-image", MovingImageController)
 
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
-import SearchTripsController from "./search_trips_controller"
-application.register("search-trips", SearchTripsController)
+// import SearchTripsController from "./search_trips_controller"
+// application.register("search-trips", SearchTripsController)

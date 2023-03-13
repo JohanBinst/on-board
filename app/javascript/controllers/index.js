@@ -25,5 +25,5 @@ application.register("moving-image", MovingImageController)
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
-// import SearchTripsController from "./search_trips_controller"
-// application.register("search-trips", SearchTripsController)
+import SearchTripsController from "./search_trips_controller"
+application.register("search-trips", SearchTripsController)

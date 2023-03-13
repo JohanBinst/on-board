@@ -114,7 +114,7 @@ puts "Creating 10 trips ..."
     longitude: Trip::DEPARTURE[departure_point][:lng],
     departure_date_time: departure_date_time,
     # price: (100..1000).to_a.sample,
-    price: rand(100..1000),
+    price: [100, 150, 200, 250, 300, 350, 400, 450, 500].sample,
     seats: (1..20).to_a.sample,
     features: create_features,
     user_id: user.id,

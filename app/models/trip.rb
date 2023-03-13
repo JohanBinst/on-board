@@ -9,7 +9,6 @@ class Trip < ApplicationRecord
     'Tomo': { lat: -21.959447, lng: 166.138428 }
   }
 
-
   DESTINATION = [
     "Dumbea pass",
     "Ilot Tenia",
@@ -46,8 +45,19 @@ class Trip < ApplicationRecord
     "speaker",
     "insurance",
     "sunsreen",
-    "towels"
   ]
+
+  FEATURE_ICONS = {
+    "fishing gears": "fas fa-fish",
+    "first aids": "fas fa-first-aid",
+    "snorkel": "fas fa-swimmer",
+    "meals": "fas fa-utensils",
+    "drinks": "fas fa-glass-martini",
+    "speaker": "fas fa-volume-up",
+    "insurance": "fas fa-shield-alt",
+    "sunsreen": "fas fa-sun",
+    "towels": "fas fa-tshirt"
+  }
 
   has_many :bookings, dependent: :destroy
   belongs_to :user
@@ -58,7 +68,7 @@ class Trip < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_parameters,
-    against: [ :activity_type, :destination ],
+    against: [ :activity_type, :destination, :departure_point ],
     using: {
       tsearch: { prefix: true }
     }

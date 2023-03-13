@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   onScroll(e) {
     const scrollPos = window.scrollY
-    if (scrollPos > 450) {
+    if (scrollPos > this.yposValue) {
       this.element.style.background = 'white'
     } else {
       this.element.style.background = 'transparent'

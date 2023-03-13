@@ -73,7 +73,7 @@ end
 
 puts "Creating 10 trips ..."
 1.times do |i|
-  activity = Trip::ACTIVITIES.sample((1..3).to_a.sample)
+  activity = Trip::ACTIVITIES.sample
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_point = Trip::DEPARTURE.keys.sample
@@ -92,7 +92,7 @@ puts "Creating 10 trips ..."
     price: [100, 150, 200, 250, 300, 350, 400, 450, 500].sample,
     seats: (1..20).to_a.sample,
     features: Trip::FEATURES_LIST.sample(rand(Trip::FEATURES_LIST.count) + 1),
-    user_id: user.id,
+    user_id: user.id
   }
 
   new_trip = Trip.new(attributes_hash)

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get 'trips/user/:user_id', to: 'trips#my_trips', as: :my_trips
   resources :bookings, only: [:show, :index, :edit]
+  get 'home', to: 'pages#home' #test moving div
   get 'set_preferences', to: 'profiles#set_preferences', as: :set_preferences
-  resources :profiles, only:[:update]
+  resources :profiles, only: [:update]
 end

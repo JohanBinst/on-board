@@ -2,6 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="navbar"
 export default class extends Controller {
+  static values = {
+    ypos: {
+      type: Number,
+      default: 350
+    }
+  }
   connect() {
     console.log('Hello')
   }
@@ -9,7 +15,7 @@ export default class extends Controller {
   onScroll(e) {
     console.log(window.scrollY)
     const scrollPos = window.scrollY
-    if (scrollPos > 450) {
+    if (scrollPos > this.yposValue) {
       this.element.style.background = 'white'
     } else {
       this.element.style.background = 'transparent'

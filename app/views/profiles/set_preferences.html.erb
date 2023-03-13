@@ -1,0 +1,7 @@
+<h1>Let's get to know eachother 😄</h1>
+<p>Set your preferences for what you like</p>
+
+<%= simple_form_for current_user, url: profile_path(current_user) do |f| %>
+  <%= f.input :preferences, as: :check_boxes, :collection => Trip::ACTIVITIES, prompt: 'Features', multiple: true, include_blank: false, include_hidden: false %>
+  <%= f.submit %>
+<% end %>

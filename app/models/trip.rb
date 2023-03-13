@@ -58,7 +58,7 @@ class Trip < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_parameters,
-    against: [ :activity_type, :destination ],
+    against: [ :activity_type, :destination, :departure_point ],
     using: {
       tsearch: { prefix: true }
     }

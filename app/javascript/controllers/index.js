@@ -27,3 +27,6 @@ application.register("navbar", NavbarController)
 
 import SearchTripsController from "./search_trips_controller"
 application.register("search-trips", SearchTripsController)
+
+import WeatherController from "./weather_controller"
+application.register("weather", WeatherController)

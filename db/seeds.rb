@@ -48,32 +48,12 @@ descriptions = {
   Flyfishing: "Flyfishing is a unique way to experience the pristine rivers and streams of New Caledonia. In Poindimie, you can cast your line and try your luck at catching trout, mullet, or other freshwater fish. The lush forests and clear waters provide the perfect backdrop for a peaceful and relaxing day out. You'll also have the chance to learn from local experts and gain insight into the traditional fishing techniques used by the locals. Don't miss out on this unforgettable fishing adventure!"
 }
 
-def create_activity
-  activities = [
-    "Snorkeling",
-    "Kayaking",
-    "Paddleboarding",
-    "Surfing",
-    "Kiteboarding",
-    "Windsurfing",
-    "Diving",
-    "Wingfoiling",
-    "Wakeboaring",
-    "Fishing",
-    "Sailing",
-    "Spearfishing",
-    "Flyfishing"
-  ]
-  activities.sample
-end
-
 def create_destination
   Trip::DESTINATION.sample
 end
 
 puts "Creating 10 trips ..."
 1.times do |i|
-  activity = Trip::ACTIVITIES.sample((1..3).to_a.sample)
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_point = Trip::DEPARTURE.keys.sample
@@ -81,7 +61,7 @@ puts "Creating 10 trips ..."
   activity = Trip::ACTIVITIES.sample
   attributes_hash = {
     name: create_name,
-    activity_type: activity,
+    activity_type: [activity],
     description: descriptions[activity.to_sym],
     destination: create_destination,
     departure_point: departure_point,

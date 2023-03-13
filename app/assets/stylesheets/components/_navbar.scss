@@ -1,18 +1,23 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
-  // border-bottom: 0.5px solid lightgrey;
   top: 0;
   position: sticky;
   z-index: 999;
   height: 80px;
   transition: 0.3s ease-in-out;
+  width: 100vw;
 }
 
 .search-bar .form-control {
   border-radius: 30px;
+  border: 1px solid #0c3865;
   background: none;
-  color: rgb(158, 158, 158);
+  color: #0c3865;
+}
+
+.d-flex input {
+   color: #0c3865;
 }
 
 .d-flex #submit-icon {
@@ -20,7 +25,7 @@
   border: none;
   background: none;
   text-indent: -25px;
-  color: #9e9e9e;
+  color: #0c3865;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -32,9 +37,8 @@
 }
 
 .nav-item {
-  border: 1px solid #0c3865;
   color: #0c3865;
-  padding: 0px 30px 0px 30px;
+  padding: 0px 15px 0px 15px;
   border-radius: 7px;
   background: none;
   text-decoration: none;
@@ -51,8 +55,4 @@
 .nav-item:hover a {
   color:white;
   transition: 0.5s;
-}
-
-#navbarDropdown {
-  cursor: pointer;
 }

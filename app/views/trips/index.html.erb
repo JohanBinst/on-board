@@ -1,4 +1,6 @@
-<%= render "shared/banner" %>
+<div style="margin-top: -80px;">
+  <%= render "shared/banner" %>
+</div>
 <div class="container py-4">
   <div data-search-trips-target="recommendations">
     <% if params[:query].nil? || params[:query]&.length == 0 %>

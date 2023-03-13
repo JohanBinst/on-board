@@ -1,50 +1,84 @@
 <div class="container mt-4">
-  <h1><%= @trip.name %></h1>
-  <h4><%= @trip.destination %></h4>
-
+  <h1><%= @trip.activity_type.join(' & ') %> in <%= @trip.destination %></h1>
+  <h4 class="">Hosted by <%= @trip.user.first_name %></h4>
   <% if @trip.photos.attached? %>
-    <div class="photos-wrapper m-3">
+    <div class="photos-wrapper">
       <div class="row gx-2">
         <div class="col-6">
           <%= cl_image_tag @trip.thumbnail.key, class: "w-100", :gravity=>"auto", crop: :fill %>
         </div>
         <div class="col-6">
           <% n = 1 %>
-          <% @trip.photos.each_slice(2) do |slice| %>
+          <% if @trip.photos.count > 1 %>
             <div class="row gx-2">
-              <% slice.each do |photo| %>
-                <div class="col-6">
-                  <%= cl_image_tag photo.key, class: "w-100 mb-#{n}", :gravity=>"auto", crop: :fill %>
-                </div>
+              <% @trip.photos.each_slice(2) do |slice| %>
+                <% slice.each do |photo| %>
+                  <div class="col-6">
+                    <div style=''>
+                      <%= cl_image_tag photo.key, class: "w-100 mb-#{n}", :gravity=>"auto", crop: :fill %>
+                    </div>
+                  </div>
+                <% end %>
+                <% n = 0 %>
               <% end %>
-              <% n = 0 %>
             </div>
+          <% else %>
+            <%= cl_image_tag @trip.photos.key, class: "w-100", :gravity=>"auto", crop: :fill %>
           <% end %>
         </div>
       </div>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-8">
-      <h3><%= @trip.activity_type %></h3>
-      <div class="description">
+  <div class="row justify-content-between">
+    <div class="col-lg-7 col-md-12">
+      <h3><%= @trip.name %></h3>
+      <div class="info-section">
         <h5>Description</h5>
         <p><%= @trip.description %></p>
       </div>
-      <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-marker-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <hr>
+      <div>
+        <div class="info-section">
+          <h5>Features</h5>
+          <div class="row">
+            <% @trip.features.each do |feature| %>
+              <div class="col-6">
+                <div>
+                  <i class="<%= Trip::FEATURE_ICONS[feature.to_sym] %>" style="height: 24px; width: 24px;"></i>  <%= feature %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="info-section">
+        <h5>Departure Point</h5>
+        The departure point is at <%= @trip.departure_point %>, here it is on the map:
+        <div class="departure-map"
+        data-controller="map"
+        data-map-marker-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="booking_form">
-        <h5>Book now</h5>
+    <div class="col-lg-4 col-md-12">
+      <div class="form_container booking_form">
+        <h5>Book this trip</h5>
+        <p>Price per person: <%= @trip.price %>AUD</p>
+        <p>Total number of guests:</p>
         <%= simple_form_for([@trip, @booking]) do |f| %>
-        <%= f.input :total_guests, as: :integer %>
-        <%= f.submit "Book now", class: "btn btn-success" %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :total_guests,label: false, as: :integer %>
+            </div>
+            <div class="col-6">
+              <%= f.submit "Book now", class: "btn btn-success w-100" %>
+            </div>
+          </div>
         <% end %>
+        <hr>
       </div>
     </div>
     <div data-controller="weather">
@@ -63,14 +97,3 @@
   </div>
 </div>
 
-
-<%# masonry grid %>
-<%# if false %>
-  <%# <div data-controller="masonry"> %>
-    <%# @trip.photos.each do |photo| %>
-      <%# <div class="grid-item"> %>
-        <%# cl_image_tag photo.key, class: "w-100 shadow-1-strong rounded", crop: :fill %>
-      <%# </div> %>
-    <%# end %>
-  <%# </div> %>
-<%# end %>

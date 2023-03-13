@@ -48,17 +48,7 @@ def create_activity
 end
 
 def create_destination
-  destinations = [
-    "Dumbea pass",
-    "Ilot Tenia",
-    "False pass",
-    "Amédée lighthouse",
-    "Outer reef",
-    "Ilot Signal",
-    "Ilot Maitre",
-    "Ilot Goeland"
-  ]
-  destinations.sample
+  Trip::DESTINATION.sample
 end
 
 # def create_departure_point
@@ -66,20 +56,8 @@ end
 #   departure_points.sample
 # end
 
-def create_features
-  features_list = [
-    "fishing gears",
-    "first aids",
-    "snorkel",
-    "meals",
-    "drinks",
-    "speaker",
-    "insurance",
-    "sunsreen",
-    "towels"
-  ]
-  features_list.sample(rand(features_list.count) + 1)
-end
+
+
 
 def create_description
   descriptions = [
@@ -98,8 +76,8 @@ def create_description
 end
 
 puts "Creating 10 trips ..."
-10.times do |i|
-  activity = create_activity
+1.times do |i|
+  activity = Trip::ACTIVITIES.sample((1..3).to_a.sample)
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_point = Trip::DEPARTURE.keys.sample
@@ -115,14 +93,14 @@ puts "Creating 10 trips ..."
     departure_date_time: departure_date_time,
     price: (100..1000).to_a.sample,
     seats: (1..20).to_a.sample,
-    features: create_features,
+    features: Trip::FEATURES_LIST.sample(rand(Trip::FEATURES_LIST.count) + 1),
     user_id: user.id,
   }
 
   new_trip = Trip.new(attributes_hash)
 
   blobs_array = []
-  4.times do |n|
+ 2.times do |n|
     puts "looking for photos, photo #{n + 1}/4"
     photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
     blob = { io: photo, filename: "#{i}.jpg", content_type: "image/jpg" }

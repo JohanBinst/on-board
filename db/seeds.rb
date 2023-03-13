@@ -123,7 +123,7 @@ puts "Creating 10 trips ..."
   new_trip = Trip.new(attributes_hash)
 
   blobs_array = []
-  1.times do |n|
+  4.times do |n|
     puts "looking for photos, photo #{n + 1}/4"
     photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
     blob = { io: photo, filename: "#{i}.jpg", content_type: "image/jpg" }

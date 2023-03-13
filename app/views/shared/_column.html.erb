@@ -17,10 +17,12 @@
     </div>
   </div>
 
-  <div class="moving-image">
-    <%= image %>
-
+  <div class="image-container">
+    <%= image_tag("island.png", class: "island-img") %>
+    <div data-controller="moving-image">
+      <div data-moving-image-target="image">
+        <%= image_tag("speedboat.png", class: "moving-img", style: "left: 0px;") %>
+      </div>
+    </div>
   </div>
-
-
 </div>

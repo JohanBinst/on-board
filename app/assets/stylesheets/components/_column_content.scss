@@ -1,6 +1,6 @@
 .column {
   background-color: white;
-  padding-bottom: 35px;
+  padding-bottom: 30px;
 }
 
 .column-header {
@@ -15,4 +15,25 @@
 .column p {
   color: #949494;
   font-size: 16px;
+}
+
+.content-item {
+  margin-bottom: 20px;
+}
+
+.island-img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  position: sticky;
+  left: 50vw;
+}
+
+.moving-img {
+  position: relative;
+  background-image: image-url("speedboat.png");
+  width: 75px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  left: 0px;
 }

@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-6">
           <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Acvitity types
             </button>
           </p>
@@ -31,7 +31,7 @@
 
         <div class="col-md-6">
           <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Features
             </button>
           </p>
@@ -48,39 +48,44 @@
     <div class="col-12">
       <%= f.input :description, placeholder: "Trip description", label: false %>
     </div>
-      <h3>Departure details</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point', placeholder: "Departure Point", label: false %>
+    <div class="col-12">
+      <div class="row">
+        <h3>Departure details</h3>
+        <div class="col-md-6">
+          <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point', placeholder: "Departure Point", input_html: { data: {departure_point_target: "dpoint"} }, label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} }, placeholder: "Departure Date Time", label: false %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} }, placeholder: "Departure Date Time", label: false %>
-      </div>
-    </div>
-
-    <h3>Price & spots</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :seats, placeholder: "Seats", label: false %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :price, label: 'Price per customer', prompt: '$', placeholder: "Price per customer", label: false %>
-      </div>
-
-    </div>
-
-    <h3>photos</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :photos, as: :file, input_html: { multiple: true }, placeholder: "Insert photos", label: false %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false }, placeholder: "Insert thumbnail", label: false %>
-      </div>
-    </div>
-      <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
-      <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
   </div>
-  <%= f.submit 'Add my trip', class:'btn btn-success' %>
+
+    <div class="col-12">
+      <div class="row">
+        <h3>Price & spots</h3>
+        <div class="col-md-6">
+          <%= f.input :seats, placeholder: "Seats", label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :price, label: 'Price per customer', prompt: '$', placeholder: "Price per customer", label: false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="row">
+        <h3>photos</h3>
+        <div class="col-md-6">
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, placeholder: "Insert photos", label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false }, placeholder: "Insert thumbnail", label: false %>
+        </div>
+      </div>
+    </div>
+      <%= f.input :latitude, :as => :hidden, input_html: {data: {departure_point_target: "lat"} }%>  <%# Hide this before production with :as => :hidden %>
+      <%= f.input :longitude, :as => :hidden,  input_html: {data: {departure_point_target: "lng"} } %> <%# Hide this before production with :as => :hidden %>
+  </div>
+  <%= f.submit 'Add my trip', class:'btn btn-success', style: "width: 30%"%>
 
 <% end %>

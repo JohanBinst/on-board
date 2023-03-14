@@ -18,15 +18,37 @@
 }
 
 .content-item {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+}
+
+.image-container {
+  position: static;
+  bottom: 0px;
+  left: 0px;
+  // z-index: 1000;
+  width: 100%;
+  margin-bottom: -25px;
 }
 
 .island-img {
   display: block;
   width: 90px;
   height: 90px;
-  position: sticky;
-  left: 50vw;
+  // position: sticky;
+  // left: 50vw;
+  position: relative;
+  left: 50%;
+  bottom: -50px;
+}
+
+.moving-img-parent {
+  display: inline-flex;
+  justify-content: flex-end;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  width: 0%;
+  margin-bottom: -20px;
+  transform: translateY(20px);
 }
 
 .moving-img {

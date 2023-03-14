@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 // import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
-const lat = document.getElementById('trip_latitude')
-const lng = document.getElementById('trip_longitude')
 
 // Connects to data-controller="departure-point"
 export default class extends Controller {
@@ -10,23 +8,22 @@ export default class extends Controller {
     departurePoints: Object
    }
 
-  static targets = ["lat", "lng"]
+  static targets = ["lat", "lng", "map", "dpoint"]
 
   connect() {
-    console.log("8:58")
-
-    const departure = document.getElementById('trip_departure_point')
-    const mapCenter = { lng: 166.45136622553366, lat: -22.272158289730115 }
+    const departure = this.dpointTarget;
+    const mapCenter = { lng: 166.45136622553366, lat: -22.272158289730115 };
 
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapTarget,
       style: "mapbox://styles/mapbox/streets-v10",
       center: [ mapCenter.lng, mapCenter.lat ],
       zoom: 15
       })
       .addControl(new mapboxgl.NavigationControl());
+
 
     departure.onchange = () => {
       // console.log(this.departurePointsValue[departure.value])
@@ -58,8 +55,8 @@ export default class extends Controller {
 
   getCoordinates(mark) {
     console.log(mark.getLngLat())
-    lat.value = mark.getLngLat().lat
-    lng.value = mark.getLngLat().lng
+    this.latTarget.value = mark.getLngLat().lat;
+    this.lngTarget.value = mark.getLngLat().lng;
     }
 
   // onDragEnd (marker) {

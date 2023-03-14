@@ -6,42 +6,21 @@ export default class extends Controller {
   static values = { imagePosition : Number }
 
   connect() {
-    // console log image target
-    console.log("21:57")
-    // console.log(this.imageTarget.style.left)
-
-    const image = this.imageTarget.innerHTML;
-    console.log(image)
-    // const maxHeight = 85;
-    window.addEventListener("scroll", function() {
-      this.document.documentElement.clientHeight
-      var scrollPosition = window.scrollY;
-      var maxScroll = document.body.scrollHeight - window.innerHeight;
-      var scrollPercent = scrollPosition / maxScroll;
-      var windowWidth = this.document.documentElement.clientWidth;
-      var imagePosition = scrollPercent * windowWidth / 2;
-      // var info = {
-      //   scrollPosition: scrollPosition,
-      //   imagePosition: imagePosition,
-      //   scrollPercent: scrollPercent,
-      //   maxScroll: maxScroll
-      // }
-      console.log(image.style.left);
-      // if (scrollPercent > 0.85 ) {
-      //   image.style.left = imagePosition + 'px';
-      // } else if (scrollPercent > 0.95) {
-      //   image.style.left = (windowWidth / 2) + 'px'
-      // }
-    });
-
+    // console.log("21:57")
   }
 
-  // onScroll() {
-  //   var scrollPosition = window.scrollY
-  //   var imagePosition = (scrollPosition / 100 ) * window.innerWidth
-  //   // console.log(scrollPosition)
-  //   if (maxHeight > scrollPosition && scrollPosition >= 0) {
-  //     image.style.left = imagePosition + 'px'
-  //     }
-  // }
+  onScroll() {
+    console.log(scrollPercent)
+    var scrollYPosition = window.scrollY;
+    var maxYScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPercent = scrollYPosition / maxYScroll;
+
+    console.log(scrollPercent * 100)
+    if (scrollPercent > 0.85) {
+      this.imageTarget.style.width = ((1000 * scrollPercent - 850 ) / 3) + '%';
+    }
+    else {
+      this.imageTarget.style.width = '0%';
+    }
+  }
 }

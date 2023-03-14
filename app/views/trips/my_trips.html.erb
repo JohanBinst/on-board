@@ -9,7 +9,7 @@
 
         <% @trips.each do |trip| %>
           <div class="card mb-2">
-            <%= trip.name %>
+            <%= link_to trip.name, trip_path(trip) %>
             <%= trip.departure_date_time %>
             <%= link_to "", trip_path(trip),
               data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this trip ?" },

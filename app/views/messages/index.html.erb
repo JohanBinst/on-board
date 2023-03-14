@@ -1,0 +1,14 @@
+<div class="container">
+  <%= link_to 'Back to booking', @booking, class: 'btn btn-primary' %>
+  <h1>Messages with <%= @booking.trip.user.first_name %></h1>
+  <div class="messages">
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@booking, @message] do |f| %>
+    <%= f.input :content %>
+    <%= f.submit "Send", class: 'btn btn-primary w-100' %>
+  <% end %>
+</div>

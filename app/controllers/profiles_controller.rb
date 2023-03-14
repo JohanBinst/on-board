@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  skip_before_action :ask_for_preferences, only: [:set_preferences, :update]
+  # skip_before_action :ask_for_preferences, only: [:set_preferences, :update]
 
-  def set_preferences
+  # def set_preferences
   end
 
   def update

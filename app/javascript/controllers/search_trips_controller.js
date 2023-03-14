@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-trips"
 export default class extends Controller {
-  static targets = [ "form", "input", "searchResults", "recommendations" ]
+  static targets = [ "form", "input", "card" ]
   connect() {
     console.log("Connected to search-trips controller")
     console.log(this.inputTarget)
@@ -15,13 +15,7 @@ export default class extends Controller {
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
-        if (this.inputTarget.value === '') {
-          this.searchResultsTarget.innerHTML = "";
-          this.recommendationsTarget.classList.remove("d-none")
-        } else {
-          this.searchResultsTarget.outerHTML = data;
-          this.recommendationsTarget.classList.add("d-none")
-        }
+        this.cardTarget.outerHTML = data
       })
   }
 }

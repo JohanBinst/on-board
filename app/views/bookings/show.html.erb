@@ -1,9 +1,7 @@
 
 <div class="container mt-4">
-  <h1>Your trip is confirmed</h1>
+  <h1 class="title-confirmation">Your trip is confirmed</h1>
   <div class="booking-card">
-
-    <%# <h4>This trip is hosted by: <%= @trip.user.first_name %>
 
     <div class="trip_detail">
       <h3 class="summary-title">Trip summary</h3>
@@ -14,30 +12,23 @@
           <p><strong>Departure location:</strong> <%= @trip.departure_point %></p>
           <p><strong>Departure time:</strong> <%= @trip.departure_date_time %> <br> Please be present 30 minutes before departure time</p>
           <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
-          <p><strong>Included in this booking:</strong> <%= @trip.features.join("&") %></p>
+          <p><strong>Included in this booking:</strong> <%= @trip.features.join(", ") %></p>
           <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
         </div>
         <div class="col-md-12 col-lg-1">
           <div class="vl"></div>
         </div>
         <div class="col-md-12 col-lg-3">
-          <h6 class="info-title">More information</h6>
+          <div class="info-title"><h6>Need extra information ?</h6></div>
           <div class="booking-details-buttons">
-            <%= button_to "Contact host", booking_path(@booking), class: "btn btn-primary contact-btn" %>
-            <%= button_to "Trip details", trip_path(@trip), class: "btn btn-primary details-btn" %>
+            <%= link_to "Message your host", booking_messages_path(@booking.id), class: "btn btn-primary contact-btn" %>
+            <%= link_to "Go to trip details", trip_path(@trip.id), class: "btn btn-primary details-btn" %>
           </div>
         </div>
       </div>
     </div>
-
-      <%# link_to "edit your booking", edit_booking_path(@booking) %>
     </div>
   </div>
-<<<<<<< HEAD
-=======
 
-  <%= link_to "Message the host", booking_messages_path(@booking), class: 'btn btn-primary' %>
 
-  <%# link_to "edit your booking", edit_booking_path(@booking) %>
->>>>>>> master
 </div>

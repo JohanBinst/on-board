@@ -1,6 +1,5 @@
 <div class="container mt-4">
   <h1><%= @trip.activity_type.join(' & ') %> in <%= @trip.destination %></h1>
-  <h4 class="">Hosted by <%= @trip.user.first_name %></h4>
   <% if @trip.photos.attached? %>
     <div class="photos-wrapper">
       <div class="row gx-2">
@@ -32,9 +31,8 @@
 
   <div class="row justify-content-between">
     <div class="col-lg-7 col-md-12">
-      <h3><%= @trip.name %></h3>
+      <h5><strong><%= @trip.name %> hosted by <%= @trip.user.first_name %></strong></h5>
       <div class="info-section">
-        <h5>Description</h5>
         <p><%= @trip.description %></p>
       </div>
       <hr>
@@ -51,8 +49,32 @@
             <% end %>
           </div>
         </div>
-      </div>
+        <hr>
+        <%# **** WEATHER FUNCTION **** %>
+        <div class="weather-section">
+          <h5>Latest weather for <%= @trip.destination %> </h5>
+          <div data-controller="weather">
+              <div data-weather-target="result">
+                <div class="weather-card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-4">
+                        <p data-weather-target="temperature"><i class="fa-solid fa-temperature-quarter"></i>  </p>
+                      </div>
+                      <div class="col-4">
+                        <p data-weather-target="description"><i class="fa-solid fa-cloud"></i>  </p>
+                      </div>
+                      <div class="col-4">
+                        <p data-weather-target="wind"><i class="fa-solid fa-wind"></i>  </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
       <hr>
+      </div>
       <div class="info-section">
         <h5>Departure Point</h5>
         The departure point is at <%= @trip.departure_point %>, here it is on the map:
@@ -64,36 +86,30 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-12">
-      <div class="form_container booking_form">
-        <h5>Book this trip</h5>
-        <p>Price per person: <%= @trip.price %>AUD</p>
-        <p>Total number of guests:</p>
+      <div class="form_container booking_form" data-controller="price-calculator" data-price-calculator-price-value="<%= @trip.price %>" >
+        <h5>Book <%= @trip.activity_type.join(' & ') %> </h5>
+        <p>Number of guests you want to book for:</p>
         <%= simple_form_for([@trip, @booking]) do |f| %>
           <div class="row">
             <div class="col-6">
-              <%= f.input :total_guests,label: false, as: :integer %>
+              <%= f.input :total_guests,
+                label: false,
+                as: :integer,
+                input_html: {
+                  data: {
+                    price_calculator_target: "numberOfSpots",
+                    action: "change->price-calculator#calculateTotalPrice"
+                }} %>
             </div>
             <div class="col-6">
-              <%= f.submit "Book now", class: "btn btn-success w-100" %>
+              <%= f.submit "Book now", class: "btn btn-outline-success w-100" %>
             </div>
           </div>
         <% end %>
         <hr>
+          <div class="d-flex justify-conten-between total-price">Total price<span data-price-calculator-target="totalPrice">$<%= @trip.price %> AUD</span></div>
+        <hr>
       </div>
-    </div>
-    <div data-controller="weather">
-        <div data-weather-target="result">
-          <div class="card weather-card">
-            <div class="card-body">
-              <h5 class="location" data-weather-target="city"> Noumea</h5>
-              <%# <p class="icon" data-weather-target="icon">icon: </p> %>
-              <p class="description" data-weather-target="description">Description: </p>
-              <p class="temperature" data-weather-target="temperature"> Temperature: </p>
-              <p class="wind" data-weather-target="wind">Wind: </p>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 </div>
-

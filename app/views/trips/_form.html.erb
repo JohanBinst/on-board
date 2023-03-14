@@ -9,7 +9,7 @@
           <%= f.input :name, placeholder: "Trip name", label: false %>
         </div>
         <div class="col-md-6">
-          <%= f.input :destination, :collection => Trip::DESTINATION, prompt: 'Destination', placeholder: "Destination", label: false %>
+          <%=  f.input :destination, :collection => Trip::DESTINATION, label: false, prompt: 'Destination', class: "text-secondary" %>
         </div>
       </div>
     </div>
@@ -18,11 +18,14 @@
       <div class="row">
         <div class="col-md-6">
           <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-primary w-100 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#activity-types" aria-expanded="false" aria-controls="activity-types">
               Acvitity types
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 1.25rem; width: 1.25rem;">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
             </button>
           </p>
-          <div class="collapse" id="collapseExample">
+          <div class="collapse" id="activity-types">
             <div class="card card-body">
               <%= f.input :activity_type, as: :check_boxes, :collection => Trip::ACTIVITIES,  prompt: 'Activity', multiple: true%>
             </div>
@@ -31,8 +34,11 @@
 
         <div class="col-md-6">
           <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-primary w-100 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Features
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 1.25rem; width: 1.25rem;">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
             </button>
           </p>
           <div class="collapse" id="collapseExample">
@@ -49,38 +55,45 @@
       <%= f.input :description, placeholder: "Trip description", label: false %>
     </div>
       <h3>Departure details</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point', placeholder: "Departure Point", label: false %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} }, placeholder: "Departure Date Time", label: false %>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :departure_point, :collection => Trip::DEPARTURE, prompt: 'Departure Point', placeholder: "Departure Point", label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :departure_date_time, label:'Departure Date*', as: :string, input_html: { data: {flatpickr_target: "departureDate"} }, placeholder: "Departure Date Time", label: false %>
+        </div>
       </div>
     </div>
 
     <h3>Price & spots</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :seats, placeholder: "Seats", label: false %>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :seats, placeholder: "Seats", label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :price, label: 'Price per customer', prompt: '$', placeholder: "Price per customer", label: false %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= f.input :price, label: 'Price per customer', prompt: '$', placeholder: "Price per customer", label: false %>
-      </div>
-
     </div>
 
-    <h3>photos</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :photos, as: :file, input_html: { multiple: true }, placeholder: "Insert photos", label: false %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false }, placeholder: "Insert thumbnail", label: false %>
+    <h3>Photos</h3>
+    <div class="12-col">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, placeholder: "Insert photos", label: false %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :thumbnail, label: "Select a thumbnail for your trip", as: :file, input_html: { multiple: false }, placeholder: "Insert thumbnail", label: false %>
+        </div>
       </div>
     </div>
       <%= f.input :latitude, :as => :hidden %>  <%# Hide this before production with :as => :hidden %>
       <%= f.input :longitude, :as => :hidden %> <%# Hide this before production with :as => :hidden %>
   </div>
-  <%= f.submit 'Add my trip', class:'btn btn-success' %>
+  <div class="col-12">
+  <%= f.submit 'Add my trip', class:'btn btn-success w-100' %>
+  </div>
 
 <% end %>

@@ -19,8 +19,8 @@
 
   <div class="image-container">
     <%= image_tag("island.png", class: "island-img") %>
-    <div data-controller="moving-image">
-      <div data-moving-image-target="image">
+    <div data-controller="moving-image" data-action="scroll@window->moving-image#onScroll">
+      <div data-moving-image-target="image" class="moving-img-parent">
         <%= image_tag("speedboat.png", class: "moving-img", style: "left: 0px;") %>
       </div>
     </div>

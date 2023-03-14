@@ -49,6 +49,12 @@ class TripsController < ApplicationController
     redirect_to my_trips_path(current_user), status: :see_other
   end
 
+  # GET /trips/:id/dashboard
+  def dashboard
+    @trip = Trip.find(params[:id])
+    @bookings = @trip.bookings
+  end
+
   private
 
   def trip_params

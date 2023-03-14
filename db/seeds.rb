@@ -72,7 +72,7 @@ puts "Creating 10 trips ..."
     price: [100, 150, 200, 250, 300, 350, 400, 450, 500].sample,
     seats: (1..20).to_a.sample,
     features: Trip::FEATURES_LIST.sample(rand(Trip::FEATURES_LIST.count) + 1),
-    user_id: user.id,
+    user_id: user.id
   }
 
   new_trip = Trip.new(attributes_hash)

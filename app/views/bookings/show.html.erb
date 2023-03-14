@@ -1,24 +1,36 @@
 
-<h1>Trip details</h1>
-<p><strong>Trip name:</strong> <%= @trip.name %> | <strong> hosted by:</strong> <%= @trip.user.first_name %></p>
-<%# <%= cl_image_tag @trip.photo.key, height: 250, crop: :fill %>
-<%# <% if @trip.photo.attached? %>
-<%# <% end %>
+<div class="container mt-4">
+  <h1>Your trip is confirmed</h1>
+  <div class="booking-card">
 
-<h4>This trip is passionately hosted by: <%= @trip.user.first_name %> </h4>
+    <%# <h4>This trip is hosted by: <%= @trip.user.first_name %>
 
-<div class="trip_detail">
-  <div class="trip_description">
-    <%= @trip.description %></p>
-    <p><strong>Activities include:</strong> <%= @trip.activity_type %></p>
-    <p><strong>Trip departs from:</strong> <%= @trip.departure_point %></p>
-    <p><strong>Departure time is:</strong> <%= @trip.departure_date_time %>, please be present 30' before departure time</p>
+    <div class="trip_detail">
+      <h3 class="summary-title">Trip summary</h3>
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <p><strong>Host:</strong> <%= @trip.user.first_name %></p>
+          <p><strong>Activities:</strong> <%= @trip.activity_type.join("&") %>
+          <p><strong>Departure location:</strong> <%= @trip.departure_point %></p>
+          <p><strong>Departure time:</strong> <%= @trip.departure_date_time %> <br> Please be present 30 minutes before departure time</p>
+          <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
+          <p><strong>Included in this booking:</strong> <%= @trip.features.join("&") %></p>
+          <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
+        </div>
+        <div class="col-md-12 col-lg-1">
+          <div class="vl"></div>
+        </div>
+        <div class="col-md-12 col-lg-3">
+          <h6 class="info-title">More information</h6>
+          <div class="booking-details-buttons">
+            <%= button_to "Contact host", booking_path(@booking), class: "btn btn-primary contact-btn" %>
+            <%= button_to "Trip details", trip_path(@trip), class: "btn btn-primary details-btn" %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
-    <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
-    <p><strong>Included in this booking:</strong> <%= @trip.features %></p>
-
+      <%# link_to "edit your booking", edit_booking_path(@booking) %>
+    </div>
   </div>
-
-  <%# link_to "edit your booking", edit_booking_path(@booking) %>
 </div>

@@ -11,7 +11,7 @@
             </div>
             <div class="card-content">
               <div class="activity-title">
-                <%= link_to trip.activity_type, trip_path(trip) %>
+                <%= link_to trip.activity_type.join(", "), trip_path(trip) %>
               </div>
               <p class="card-subtitle mb-0 mt-1 font-weight-bold text-secondary">
                 <%= trip.destination %>

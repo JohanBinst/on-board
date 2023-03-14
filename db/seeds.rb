@@ -78,15 +78,15 @@ puts "Creating 10 trips ..."
   new_trip = Trip.new(attributes_hash)
   blobs_array = []
 
- 2.times do |n|
+ 4.times do |n|
     puts "looking for photos, photo #{n + 1}/4"
-    photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
+    photo = URI.open("https://source.unsplash.com/random/640x480/?#{activity}")
     blob = { io: photo, filename: "#{i}.jpg", content_type: "image/jpg" }
     blobs_array << blob
   end
   puts "attaching photos"
   new_trip.photos.attach(blobs_array)
-  thumbnail = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
+  thumbnail = URI.open("https://source.unsplash.com/random/640x480/?#{activity}")
   new_trip.thumbnail.attach(io: thumbnail, filename: "thumbnail.jpg", content_type: "image/jpg")
   puts "trip thumbnail attached"
   new_trip.save!

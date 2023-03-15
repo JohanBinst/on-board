@@ -1,0 +1,43 @@
+#login-form {
+  padding-top: 50px;
+}
+
+.login-content {
+  border-radius: 7px;
+  background-color: white;
+  box-shadow: 0 15px 16.83px 0.17px rgba(0,0,0,.05);
+  display: flex;
+}
+
+.login-form {
+  padding: 35px;
+}
+
+.form-button .btn-login {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 7px;
+  background: rgb(20, 20, 20);
+  color: white;
+  font-weight: semibold;
+  margin-top: 20px;
+}
+
+.form-button .btn-login:hover {
+  background-color: rgb(84, 83, 83);
+  transition: 0.5s;
+}
+
+.login-img {
+  background-image: asset-url("login.jpg");
+  border-radius: 0px 7px 7px 0px;
+  background-size: cover;
+  background-position: center;
+}
+
+.shared-links p {
+  font-size: small;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 30px;
+}

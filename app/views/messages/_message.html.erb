@@ -1,7 +1,14 @@
 <div id="message-<%= message.id %>">
   <small>
-    <strong><%= message.user.first_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <div class="col-md-12 col-lg-12 mb-3 ">
+      <div class="border border-dark-subtle rounded-4 px-3 py-2">
+        <strong><%= message.user.first_name %> wrote on </strong>
+        <i><%= message.created_at.strftime("%b %e, %l:%M %p") %>:
+          <div>
+            <%= message.content %>
+          </div>
+        </i>
+      </div>
+    </div>
   </small>
-  <p><%= message.content %></p>
 </div>

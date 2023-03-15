@@ -3,3 +3,15 @@
   border: #ced4da 1px solid;
   color: #6c757d;
 }
+
+.booking-details-buttons {
+  position: relative;
+}
+
+.booking-details-buttons.btn-primary {
+  position: fixed;
+  bottom: 200px;
+  // width: 40%;
+  background-color: #F4F4F4;
+  z-index: 9999;
+}

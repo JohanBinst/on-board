@@ -20,7 +20,7 @@ class Trip < ApplicationRecord
     "Ilot Goeland"
   ]
 
-  ACTIVITIES = [
+ACTIVITIES = [
     "Snorkeling",
     "Kayaking",
     "Paddleboarding",
@@ -28,12 +28,12 @@ class Trip < ApplicationRecord
     "Kiteboarding",
     "Windsurfing",
     "Diving",
-    "Wingfoiling",
+    # "Wingfoiling",
     "Wakeboaring",
     "Fishing",
     "Sailing",
     "Spearfishing",
-    "Flyfishing"
+    # "Flyfishing"
   ]
 
   FEATURES_LIST = [

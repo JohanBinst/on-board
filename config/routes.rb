@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root "trips#index"
   resources :trips, only: [:index, :show, :new, :create, :destroy] do
     resources :bookings, only: [:create]
-    member do
-      get :dashboard
-    end
+    # member do
+    #   get :dashboard
+    # end
   end
   get 'trips/user/:user_id', to: 'trips#my_trips', as: :my_trips
   resources :bookings, only: [:show, :index, :edit] do

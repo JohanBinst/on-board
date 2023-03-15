@@ -52,10 +52,10 @@ class TripsController < ApplicationController
   end
 
   # GET /trips/:id/dashboard
-  def dashboard
-    @trip = Trip.find(params[:id])
-    @bookings = @trip.bookings
-  end
+  # def dashboard
+  #   @trip = Trip.find(params[:id])
+  #   @bookings = @trip.bookings
+  # end
 
   private
 

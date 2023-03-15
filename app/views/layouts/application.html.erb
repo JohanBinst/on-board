@@ -16,10 +16,12 @@
   </head>
 
   <body data-controller="search-trips">
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <div>
-      <%= yield %>
+    <div class="min-vh-100">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <div>
+        <%= yield %>
+      </div>
     </div>
   <%= render "shared/footer" %>
   </body>

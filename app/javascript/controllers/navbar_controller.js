@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {
     ypos: {
       type: Number,
-      default: 350
+      default: 280
     }
   }
   connect() {

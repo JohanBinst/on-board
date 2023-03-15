@@ -32,7 +32,7 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-lewagon .navbar-brand {
   width: 40px;
 }
 
@@ -55,4 +55,28 @@
 .nav-item:hover a {
   color:white;
   transition: 0.5s;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 5px;
+  text-decoration: none;
+  color: gray;
+}
+
+.img-boat {
+  width: 50px;
+  height: 20px;
+  margin-top: 25px;
+}
+
+.img-island {
+  width: 40px;
+  height: 45px;
+}
+
+.brand-name {
+  text-decoration: none;;
 }

@@ -4,8 +4,10 @@
 @import "login_new";
 @import "signup";
 @import "booking_details";
+@import "user_bookings";
 
 body {
   position: relative;
   min-height: 100vh;
+  background-color: white;
 }

@@ -1,12 +1,14 @@
 .card-booking {
   background-color: $white;
-  //border: 1px solid $light-gray;
   overflow: hidden;
   height: 140px;
-  //box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   margin-bottom: 60px;
+  margin-top: 30px;
+}
 
+.title-header {
+  padding-top: 30px;
 }
 
 .card-booking-content {

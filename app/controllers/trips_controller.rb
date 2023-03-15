@@ -18,10 +18,12 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(trip_params)
-    @trip.user_id = current_user.id
-    if @trip.save
-      redirect_to trip_path(@trip)
+    trip = Trip.new(trip_params)
+    trip.activity_type.shift
+    trip.features.shift
+    trip.user_id = current_user.id
+    if trip.save
+      redirect_to trip_path(trip)
     else
       render :new
     end
@@ -47,6 +49,12 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.destroy
     redirect_to my_trips_path(current_user), status: :see_other
+  end
+
+  # GET /trips/:id/dashboard
+  def dashboard
+    @trip = Trip.find(params[:id])
+    @bookings = @trip.bookings
   end
 
   private

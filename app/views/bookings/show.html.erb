@@ -1,24 +1,34 @@
 
-<h1>Trip details</h1>
-<p><strong>Trip name:</strong> <%= @trip.name %> | <strong> hosted by:</strong> <%= @trip.user.first_name %></p>
-<%# <%= cl_image_tag @trip.photo.key, height: 250, crop: :fill %>
-<%# <% if @trip.photo.attached? %>
-<%# <% end %>
+<div class="container mt-4">
+  <h1 class="title-confirmation">Your trip is confirmed</h1>
+  <div class="booking-card">
 
-<h4>This trip is passionately hosted by: <%= @trip.user.first_name %> </h4>
-
-<div class="trip_detail">
-  <div class="trip_description">
-    <%= @trip.description %></p>
-    <p><strong>Activities include:</strong> <%= @trip.activity_type %></p>
-    <p><strong>Trip departs from:</strong> <%= @trip.departure_point %></p>
-    <p><strong>Departure time is:</strong> <%= @trip.departure_date_time %>, please be present 30' before departure time</p>
-
-    <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
-    <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
-    <p><strong>Included in this booking:</strong> <%= @trip.features %></p>
-
+    <div class="trip_detail">
+      <h3 class="summary-title">Trip summary</h3>
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <p><strong>Host:</strong> <%= @trip.user.first_name %></p>
+          <p><strong>Activities:</strong> <%= @trip.activity_type.join("&") %>
+          <p><strong>Departure location:</strong> <%= @trip.departure_point %></p>
+          <p><strong>Departure time:</strong> <%= @trip.departure_date_time %> <br> Please be present 30 minutes before departure time</p>
+          <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
+          <p><strong>Included in this booking:</strong> <%= @trip.features.join(", ") %></p>
+          <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
+        </div>
+        <div class="col-md-12 col-lg-1">
+          <div class="vl"></div>
+        </div>
+        <div class="col-md-12 col-lg-3">
+          <div class="info-title"><h6>Need extra information ?</h6></div>
+          <div class="booking-details-buttons">
+            <%= link_to "Message your host", booking_messages_path(@booking.id), class: "btn btn-primary contact-btn" %>
+            <%= link_to "Go to trip details", trip_path(@trip.id), class: "btn btn-primary details-btn" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
 
-  <%# link_to "edit your booking", edit_booking_path(@booking) %>
+
 </div>

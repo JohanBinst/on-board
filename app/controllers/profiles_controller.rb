@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   # skip_before_action :ask_for_preferences, only: [:set_preferences, :update]
 
   # def set_preferences
-  end
+  # end
 
   def update
     if current_user.update(profile_params)

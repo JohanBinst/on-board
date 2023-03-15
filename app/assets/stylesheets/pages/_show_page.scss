@@ -19,3 +19,18 @@ h5{
   font-weight: 400;
   margin-bottom: 10px;
 }
+
+.btn-trip-show {
+  color: white;
+  background: #0c3865;
+  border: 0.5px solid #0c3865;
+  border-radius: 7px;
+  font-weight: 100;
+  font-size: smaller;
+}
+
+.btn-trip-show:hover {
+  background: white;
+  color: #0c3865;
+  border: 0.5px solid #0c3865;
+}

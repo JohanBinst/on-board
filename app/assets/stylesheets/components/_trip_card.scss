@@ -28,25 +28,25 @@
 }
 
 .btn-primary-trip {
-  margin-top: 9px;
-  margin-bottom: 15px;
-  background: none;
-  border: 1px solid #21B374;
-  border-radius: 4px;
-  width: 120px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  margin-right: 5px;
+  // border: 0.5px solid #0c3865;
+  color: #0c3865;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: smaller;
 }
 
 .btn-primary-trip a {
   text-decoration: none;
-  color: #21B374;
-  font-size: smaller;
+  color: #0c3865;
+  font-size: medium;
 }
 
 .btn-primary-trip:hover {
-  background-color: #26a36d;
   transition: 0.5s;
+  background: #0c3865;
+  border: 0.5px solid #0c3865;
+  color: white;
 }
 
 .btn-primary-trip:hover a {

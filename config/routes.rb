@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get 'trips/user/:user_id', to: 'trips#my_trips', as: :my_trips
-  resources :bookings, only: [:show, :index, :edit] do
+  resources :bookings, only: [:show, :index, :edit, :destroy] do
     resources :messages, only: [:index, :create]
   end
   get 'home', to: 'pages#home' #test moving div

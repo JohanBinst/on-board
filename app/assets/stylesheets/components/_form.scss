@@ -20,7 +20,14 @@
 }
 
 .form-control {
-  color: #6c757d;
+  color: black;
+  background-color: transparent;
+  border: #0c3865 1px solid;
+  border-radius: 15px;
+}
+.form-control:focus {
+  color: black;
+  background-color: transparent;
 }
 
 .total-price {

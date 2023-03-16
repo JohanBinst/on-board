@@ -1,19 +1,26 @@
 <div class="container mt-4">
   <div class="booking-card">
     <div class="trip_detail position-relative">
-      <h3 class="summary-title">Messages with host: <%= @booking.trip.user.first_name %></h3>
+      <div>
+        <h2>Messages with host <%= @booking.trip.user.first_name %></h2>
+      </div>
       <div class="row">
         <div class="col-md-12 col-lg-8">
-            <div class="booking-messages">
+            <%# <div class="booking-messages"> %>
               <% @messages.each do |message| %>
-                <%= render message %>
+                <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-start' : 'justify-content-end' %>">
+                  <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                    <%= render message %>
+                  </div>
+                </div>
               <% end %>
               <%= simple_form_for [@booking, @message] do |f| %>
-              <div class="mt-4">
-                <%= f.input :content, placeholder: "Type message", label: false%>
+              <div class="d-flex mt-4">
+                <%= f.input :content, placeholder: "Type message", class: "mb-0", label: false %>
+                <button type="submit" id="btn-send" ><i class="fa fa-paper-plane"></i></button>
               </div>
               <% end %>
-            </div>
+            <%# </div> %>
         </div>
         <div class="col-md-12 col-lg-1">
           <div class="vl"></div>
@@ -23,5 +30,4 @@
         </div>
       </div>
     </div>
-
 </div>

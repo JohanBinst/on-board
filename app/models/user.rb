@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_many :messages, dependent: :destroy
 
-  validates :first_name, :last_name, presence: true
+  # validates :first_name, :last_name, presence: true
   has_one_attached :profile_picture
 end

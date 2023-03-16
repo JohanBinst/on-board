@@ -87,6 +87,7 @@ puts "Creating 10 trips ..."
  4.times do |n|
     puts "looking for photos, photo #{n + 1}/4"
     photo = URI.open("https://source.unsplash.com/random/640x480/?#{activity}")
+    sleep(2)
     blob = { io: photo, filename: "#{i}.jpg", content_type: "image/jpg" }
     blobs_array << blob
   end

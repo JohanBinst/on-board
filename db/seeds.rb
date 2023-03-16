@@ -59,16 +59,16 @@ def create_destination
 end
 
 puts "Creating 10 trips ..."
-10.times do |i|
+20.times do |i|
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_point = Trip::DEPARTURE.keys.sample
   departure_date_time = Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 7, period: :morning) #=> "2014-09-19 08:07:52 -0700"
-  activity = Trip::ACTIVITIES.sample
+  activity = descriptions.keys.sample
   attributes_hash = {
     name: create_name,
     activity_type: [activity],
-    description: descriptions[activity.to_sym],
+    description: descriptions[activity],
     destination: create_destination,
     departure_point: departure_point,
     latitude: Trip::DEPARTURE[departure_point][:lat],
@@ -99,4 +99,4 @@ puts "Creating 10 trips ..."
   puts "created trip #{i + 1}/10"
 end
 
-p "10 trips created"
+p "20 trips created"

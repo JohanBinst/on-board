@@ -40,7 +40,10 @@
            <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <% if current_user.profile_picture.attached? %>
+            <%= cl_image_tag current_user.profile_picture.key, class: "avatar" %>
+          <% end %>
+          <%# image_cl current_user.profile_picture.key, class: "avatar" %>
         <% else %>
           <li class="nav-item">
             <% if controller.controller_name == 'sessions' && controller.action_name == 'new' || controller.controller_name == 'registrations' && controller.action_name == 'new'%>

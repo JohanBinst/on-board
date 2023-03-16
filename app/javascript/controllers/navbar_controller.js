@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {
     ypos: {
       type: Number,
-      default: 280
+      default: 280,
     }
   }
   connect() {
@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   onScroll(e) {
-    // console.log(window.scrollY)
+    console.log(window.scrollY)
     const scrollPos = window.scrollY
     if (scrollPos > this.yposValue) {
       this.element.style.background = 'white'

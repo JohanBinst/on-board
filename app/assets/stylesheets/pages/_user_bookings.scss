@@ -1,12 +1,14 @@
 .card-booking {
   background-color: $white;
-  //border: 1px solid $light-gray;
   overflow: hidden;
   height: 140px;
-  //box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   margin-bottom: 60px;
+  margin-top: 30px;
+}
 
+.title-header {
+  padding-top: 30px;
 }
 
 .card-booking-content {
@@ -39,29 +41,30 @@
 .btn-booking-primary {
   margin-right: 5px;
   border: 0.5px solid #0c3865;
-  color: #0c3865;
+  color: white;
+  background: #0c3865;
   border-radius: 7px;
   font-weight: 100;
   font-size: smaller;
 }
 
 .btn-booking-primary:hover {
-  background: #0c3865;
+  background: white;
+  color:#0c3865;
   border: 0.5px solid #0c3865;
-  color: white;
 }
 
 .btn-booking-warning {
-  color: white;
-  background: #0c3865;
-  border: 0.5px solid #0c3865;
+  color: #8E7258;
+  background: white;
+  border: 0.5px solid #8E7258;
   border-radius: 7px;
   font-weight: 100;
   font-size: smaller;
 }
 
 .btn-booking-warning:hover {
-  background: white;
-  color: #0c3865;
-  border: 0.5px solid #0c3865;
+  background: #8E7258;
+  color: white;
+  border: 0.5px solid #8E7258;
 }

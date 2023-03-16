@@ -1,32 +1,41 @@
 
 <div class="container mt-4">
-  <h1 class="title-confirmation">Your trip is confirmed</h1>
+  <h1 class= "title-confirmation">Booking confirmed <i class="fa-regular fa-circle-check"></i></h1>
   <div class="booking-card">
-
-    <div class="trip_detail">
-      <h3 class="summary-title">Trip summary</h3>
-      <div class="row">
-        <div class="col-md-12 col-lg-8">
-          <p><strong>Host:</strong> <%= @trip.user.first_name %></p>
-          <p><strong>Activities:</strong> <%= @trip.activity_type.join("&") %>
-          <p><strong>Departure location:</strong> <%= @trip.departure_point %></p>
-          <p><strong>Departure time:</strong> <%= @trip.departure_date_time %> <br> Please be present 30 minutes before departure time</p>
-          <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
-          <p><strong>Included in this booking:</strong> <%= @trip.features.join(", ") %></p>
-          <p><strong>Total price:</strong> $ <%= @booking.total_price %></p>
-        </div>
-        <div class="col-md-12 col-lg-1">
-          <div class="vl"></div>
-        </div>
-        <div class="col-md-12 col-lg-3">
-          <div class="info-title"><h6>Need extra information ?</h6></div>
-          <div class="booking-details-buttons">
-            <%= link_to "Message your host", booking_messages_path(@booking.id), class: "btn btn-primary contact-btn" %>
-            <%= link_to "Go to trip details", trip_path(@trip.id), class: "btn btn-primary details-btn" %>
+      <h3 class="summary-title">Booking summary</h3>
+      <div class="div">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <p><strong>Host:</strong> <%= @trip.user.first_name %></p>
+            <p><strong>Activities:</strong> <%= @trip.activity_type.join("&") %>
+            <p><strong>Departure location:</strong> <%= @trip.departure_point %></p>
+            <p><strong>Departure time:</strong> <%= @trip.departure_date_time %> <br> Please be present 30 minutes before departure time</p>
+            <p><strong>Booked for:</strong> <%= @booking.total_guests %> persons</p>
+            <p><strong>Included in this booking:</strong> <%= @trip.features.join(", ") %></p>
+            <p><strong>Total price:</strong> $<%= @booking.total_price %></p>
+              <div class="btn btn-booking-confirm">
+                <%= link_to "View all bookings", bookings_path(current_user) %>
+              </div>
+          </div>
+          <div class="col-md-12 col-lg-1">
+            <div class="vl"></div>
+          </div>
+          <div class="col-md-12 col-lg-3">
+          <div class="display-box">
+            <div class="info-title text-secondary"><h6>Need extra information?</h6></div>
+            <div class="btn booking-details-btn">
+              <div class="button-contact">
+                <%= link_to "Message your host", booking_messages_path(@booking.id), class: "btn btn-primary-contact" %>
+              </div>
+              <div class="button-details">
+                <%= link_to "Go to trip details", trip_path(@trip.id), class: "btn btn-primary-td" %>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
-    </div>
+
     </div>
   </div>
 

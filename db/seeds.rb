@@ -59,7 +59,7 @@ def create_destination
 end
 
 puts "Creating 10 trips ..."
-10.times do |i|
+20.times do |i|
   # photo = URI.open("https://source.unsplash.com/random/1920x1080/?#{activity}")
   user = User.all.sample
   departure_point = Trip::DEPARTURE.keys.sample

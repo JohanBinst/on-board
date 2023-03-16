@@ -7,6 +7,7 @@
   width: 80%;
   background-color: white;
   margin-bottom: 40px;
+  padding-right:50px;
 }
 
 .summary-title {
@@ -14,18 +15,46 @@
   margin-bottom: 20px;
 }
 
-.booking-details-buttons {
+.btn-primary-contact {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  margin-right: 5px;
+  border: 0.5px solid #0C3865;
+  color: #0C3865;
+  border-radius: 7px;
+  font-weight: 100;
+  font-size: smaller;
 }
 
-.contact-btn, .details-btn {
-  width: 200px;
+.btn-primary-contact:hover {
+  background: #0C3865;
+  color: white;
+}
+
+.btn-primary-td {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5px;
+  border: 0.5px solid #0C3865;
+  color: #0C3865;
+  border-radius: 7px;
+  font-weight: 100;
+  font-size: smaller;
+}
+
+.btn-primary-td:hover {
+  background: #0C3865;
+  color: white;
+}
+
+.contact-btn:hover {
+  width: 100%;
   margin-top: 0px;
-  margin-left: auto;
+  // margin-left: auto;
 }
 
 .vl {
@@ -72,4 +101,19 @@
 
 .btn-booking-confirm:hover a {
   color: #0C3865;
+}
+
+.display-box {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.info-title {
+  margin-bottom: 10px;
+}
+
+.button-contact {
+  margin-bottom: 16px;
 }

@@ -2,13 +2,11 @@
   margin-top: 30px;
   border: 1px solid #d2cfcf;
   border-radius: 10px;
-  padding: 60px;
+  padding: 60px 0px 60px 60px;
   height: 100%;
   width: 80%;
   background-color: white;
   margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .summary-title {
@@ -45,4 +43,33 @@
 
 .title-confirmation {
   text-align: center;
+}
+
+.title-confirmation {
+  text-align: left;
+}
+
+.btn-booking-confirm {
+  background: #0C3865;
+  border: 0.5px solid #0C3865;
+  border-radius: 7px;
+  font-weight: 100;
+  font-size: smaller;
+  width: 190px;
+  padding: 10px 15px 10px 15px;
+  color: white;
+}
+
+.btn-booking-confirm a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-booking-confirm:hover {
+  background: white;
+  border: 0.5px solid #0C3865;
+}
+
+.btn-booking-confirm:hover a {
+  color: #0C3865;
 }

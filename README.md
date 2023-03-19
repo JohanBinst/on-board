@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+ON-BOARD
+
+Demo project created by Anthony Marion, Tan Nguyen and Johan Binst in 2 weeks after the Le Wagon Web Development bootcamp.
